@@ -1,3 +1,6 @@
+@extends('admin.indexadmin')
+
+@section( 'contenues') 
 <form action="{{ URL('/recepadd') }}" method="POST">
     @csrf
 
@@ -65,3 +68,4 @@
         <button type="submit" class="btn text-white" style="background-color:#0972a1">Valider</button>
       </div>
     </form >
+    @endsection

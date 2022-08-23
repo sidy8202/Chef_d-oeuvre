@@ -1,39 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
-use Illuminate\Support\Facades\Validator;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\receptionnistes;
-use App\Models\admins;
 use App\Models\User;
 
-use App\Models\citoyens;
-
-class adminController extends Controller
+class Receptionnistekoura extends Controller
 {
 
-    public function index()
+    public function index ()
     {
-        return view('admin.creadmin');
+        return view('receptionniste.crerecp');
     }
-
-    public function dashboard()
-    {
-        return view('admin.indexadmin');
-    }
-
-    public function view()
-    {
-        return view('admin.tableaudebord');
-    }
-
-    public function create()
-    {
-        return view('admin.creadmin');
-    }
-
     public function store(Request $request)
     {
         $nagnana = $request->validate(
@@ -58,14 +37,14 @@ class adminController extends Controller
                         'prenom' => $request['prenom'],
                         'email' =>$request['email'],
                         'password' => bcrypt($request['password']),
-                        'status' => 'commissaire',
+                        'status' => 'receptionniste',
                     ]
                     
                     );
 
                     if($user)
                     {
-                        $commissaire = admins::create(
+                        $receptionniste = receptionnistes::create(
                             [
                                 'id_users' => $user->id,
                                 'nom'=>$request['nom'],
@@ -78,10 +57,10 @@ class adminController extends Controller
 
                             ]
                             );                          
-                            return view('welcome');
+                            return view('receptionniste.crerecp');
                             
 
                     }
                 }
-     }          
+     }         
 }

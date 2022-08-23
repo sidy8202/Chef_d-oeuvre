@@ -30,10 +30,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->group(function() { 
     Route::get('/dashboard', [App\Http\Controllers\Admin\adminController::class,'dashboard']);  
     Route::get('/dashboard', [App\Http\Controllers\Admin\adminController::class,'view']);  
-    
+    Route::get('/dashboard',[\App\Http\Controllers\Admin\ReceptionnisteController::class,'dashboard']);
      
-    Route::post('/addrecept', [App\Http\Controllers\Admin\ReceptionnisteController::class,'store']);  
-
 
     Route::get('/citoyenadd', [App\Http\Controllers\Admin\CitoyenController::class,'index']);        
     Route::post('/citoyenadd', [App\Http\Controllers\Admin\CitoyenController::class,'store']);
@@ -41,8 +39,6 @@ Route::prefix('admin')->group(function() {
 });
 
 Route::prefix('receptionniste')->group(function() { 
-    Route::get('/dashboard', [App\Http\Controllers\ReceptionnisteController::class,'dashboard']);  
-    Route::get('/rendezvous', [App\Http\Controllers\receptionniste\ReceptionnisteController::class,'rendezvous']);  
 
 });
 
@@ -51,17 +47,21 @@ Route::prefix('citoyen')->group(function() {
 
 });
 
-Route::prefix('tout')->group(function() { 
-    Route::post('/demandes', [App\Http\Controllers\DemandesController::class,'store']);  
-    Route::get('/demandes', [App\Http\Controllers\DemandesController::class,'index']);  
+
+    // Route de vue pour demandes et declaration//
+    Route::post('/listecidemande', [App\Http\Controllers\Demandescarte::class,'store'])->name('demandeci');  
+    Route::get('/listecidemande', [App\Http\Controllers\Demandescarte::class,'index']);  
+    Route::get('/listecrdemandes', [App\Http\Controllers\DemandesController::class,'viewcr']);  
+ 
+    
+    // End //
 
 
-});
+Route::get('addrecept',[App\Http\Controllers\Receptionnistekoura::class,'index']);
+Route::post('addrecept',[App\Http\Controllers\Receptionnistekoura::class,'store']);
 
-Route::get('/recepadd', [App\Http\Controllers\Admin\ReceptionnisteController::class,'index']);        
-Route::post('/recepadd', [App\Http\Controllers\Admin\ReceptionnisteController::class,'store']);
 
-Route::get('/admiadd', [App\Http\Controllers\Admin\adminController::class,'index']);        
+Route::get('/admiadd', [App\Http\Controllers\Admin\adminController::class,'index'])->name('adminadd');        
 Route::post('/admiadd', [App\Http\Controllers\Admin\adminController::class,'store']);
 
                  

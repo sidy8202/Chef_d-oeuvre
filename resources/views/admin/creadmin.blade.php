@@ -14,6 +14,10 @@
     <p>{{ session('success') }}</p>
 </div> 
 @endif
+
+@extends('admin.indexadmin')
+
+@section( 'contenues') 
 <form action="{{ URL('/admiadd') }}" method="POST">
     @csrf
 
@@ -73,11 +77,10 @@
         <input type="password" class="form-control validate" name="password_confirmation" required autocomplete="new-password">
         <label data-error="wrong" data-succes="right" for="" name="password_confirmation" >Confirmer</label>
       </div>
-  
-
 
       <div class="modal-footer">  
         <button type="button" class="btn text-white" style="background-color:#B66639" data-bs-dismiss="modal">Annuler</button>
         <button type="submit" class="btn text-white" style="background-color:#0972a1">Valider</button>
       </div>
     </form >
+    @endsection

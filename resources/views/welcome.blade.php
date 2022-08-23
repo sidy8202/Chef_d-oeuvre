@@ -103,15 +103,16 @@
           </div>
 
                     <div class="modal-footer"> 
+                      
 
-                      <label class="" for="remember">
+                      <label class="text-center" for="remember">
                          souvenir de Moi
                       </label>
                       <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                      <button type="submit" class="btn text-white" style="background-color:#B66639">{{ __('Connexion') }}</button>
+                      <button type="submit" class="btn text-white center" style="background-color:#B66639">{{ __('Connexion') }}</button>
                         <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col ">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Mot de passe oublié?') }}
@@ -203,68 +204,7 @@
                     <label for="exampleDatepicker1" class="form-label">Confirmer</label>
                     <input type="password" class="form-control" id="exampleDatepicker1" name="password_confirmation" required autocomplete="new-password"/>
                   </div>
-                </div>
-
-                  {{-- Try --}}
-{{-- 
-                <div class="md-form mb-5">
-                  <i class="fas fa-envelope prefix grey-text"></i>
-                  <label data-error="wrong" data-succes="right" for="">Nom</label>
-                  <input type="text" name="nom" class="form-control validate">
-                </div>
-
-                <div class="md-form mb-5">
-                  <i class="fas fa-user prefix grey-text"></i>
-                  <label data-error="wrong" data-succes="right" for="">Prenom</label>
-                  <input type="text" name="prenom" class="form-control validate">
-                </div>
-
-                <div class="md-form mb-5">
-                  <i class="fas fa-envelope prefix grey-text"></i>
-                  <label data-error="wrong" data-succes="right" for="">Adresse Physique</label>
-                  <input type="text" name="adresse" class="form-control validate">
-                </div>
-
-                <div class="md-form mb-5">
-                  <i class="fas fa-user prefix grey-text"></i>
-                  <label data-error="wrong" data-succes="right" for="">Telephone</label>
-                  <input type="text" name="phone" class="form-control validate">
-                </div>
-
-                <div class="md-form mb-5">
-                  <i class="fas fa-user prefix grey-text"></i>
-                  <label data-error="wrong" data-succes="right" for="">Email</label>
-                  <input type="email" name="email" class="form-control validate"  @error('email') is-invalid @enderror"  value="{{ old('email') }}" required autocomplete="email">
-                  @error('email')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                      @enderror
-                </div>
-
-                <div class="md-form mb-5">
-                  <i class="fas fa-envelope prefix grey-text"></i>
-                  <label data-error="wrong" data-succes="right" for="">Username</label>
-                  <input type="text" name="username" class="form-control validate">
-                </div>
-
-                <div class="md-form mb-5">
-                  <i class="fas fa-user prefix grey-text"></i>
-                  <label data-error="wrong" data-succes="right" for="">Mot de passe</label>
-                  <input type="password" name="password" class="form-control validate" @error('password') is-invalid @enderror"  required autocomplete="new-password">
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="md-form mb-5">
-                  <i class="fas fa-user prefix grey-text"></i>
-                  <input type="password" class="form-control validate" name="password_confirmation" required autocomplete="new-password">
-                  <label data-error="wrong" data-succes="right" for="" name="password_confirmation" >Confirmer</label>
-                </div> --}}
-            
+                </div>           
         </div>
 
                 <div class="modal-footer">  
@@ -353,8 +293,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Bienvenue sur <span>FasoDoc</span></h1>
-      <h2>Plus besoin de vous deplacer pour demander une carte d'identité nationnale</h2>
+      <h1>Bienvenue sur <span>Faso Doc</span></h1>
+      <h2>Plus besoin de vous deplacer pour demander *****************************</h2>
       <div class="d-flex">
         <a href="#about" class="btn-get-started scrollto">Details</a>
         <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Un Mali Innovant</span></a>

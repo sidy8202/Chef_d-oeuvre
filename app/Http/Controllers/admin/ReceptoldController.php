@@ -1,37 +1,24 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\receptionnistes;
 use App\Models\admins;
 use App\Models\User;
-
 use App\Models\citoyens;
 
-class adminController extends Controller
+class ReceptionnisteController extends Controller
 {
-
-    public function index()
-    {
-        return view('admin.creadmin');
-    }
-
     public function dashboard()
     {
-        return view('admin.indexadmin');
+        return view('receptionniste.dashboard');
     }
 
-    public function view()
+    public function rendezvous()
     {
-        return view('admin.tableaudebord');
-    }
 
-    public function create()
-    {
-        return view('admin.creadmin');
     }
 
     public function store(Request $request)
@@ -58,14 +45,14 @@ class adminController extends Controller
                         'prenom' => $request['prenom'],
                         'email' =>$request['email'],
                         'password' => bcrypt($request['password']),
-                        'status' => 'commissaire',
+                        'status' => 'receptionniste',
                     ]
                     
                     );
 
                     if($user)
                     {
-                        $commissaire = admins::create(
+                        $receptionniste = receptionnistes::create(
                             [
                                 'id_users' => $user->id,
                                 'nom'=>$request['nom'],
@@ -83,5 +70,5 @@ class adminController extends Controller
 
                     }
                 }
-     }          
+     }       
 }

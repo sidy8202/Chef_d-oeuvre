@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,6 +15,11 @@ class ReceptionnisteController extends Controller
     public function dashboard()
     {
         return view('receptionniste.dashboard');
+    }
+
+    public function rendezvous()
+    {
+
     }
 
     public function store(Request $request)
