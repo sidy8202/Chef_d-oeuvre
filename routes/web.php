@@ -65,13 +65,18 @@ Route::prefix('citoyen')->group(function() {
     
 
 
-   // Route::post('/listecerdemande', [App\Http\Controllers\Demandescerti::class,'store'])->name('listecidemande');
-
-   
-    Route::get('/demandecirecp',[App\Http\Controllers\receptionniste\Demandecirep::class,'index'])->name('demandecartecpstore'); 
+    
+    
+    // Route::post('/demandedotchi',[App\Http\Controllers\receptionniste\cartedidentite::class,'store'])->name('cartegnini');
+    // Route::post('/demadecoura', [\App\Http\Controllers\receptionniste\cartedidentite::class, 'store'])->name('carte.coura');
+    Route::get('/demandecirecp',[App\Http\Controllers\receptionniste\Demandecirep::class,'index'])->name('demandecartecpstore');
+    Route::post('/demandecoura', [\App\Http\Controllers\receptionniste\cartedidentiteController::class, 'create'])->name('carte.create'); 
+    // Route::post('/demandecitchi',[App\Http\Controllers\receptionniste\Demandecirep::class,'nextstore'])->name('ok') ;
+    // Route::post('/listedemandecarte',[App\Http\Controllers\receptionniste\Demandecirep::class,'nextstore'])->name('demandecidentitestore');
+    // Route::post('/listecerdemande', [App\Http\Controllers\Demandescerti::class,'store'])->name('listecidemande');
     // Route::post('/listedemandecarte',[App\Http\Controllers\receptionniste\Demandecirep::class,'store'])->name('demandecartecpstore');
 
-    Route::post('/listedemandecarte',[App\Http\Controllers\receptionniste\Demandecirep::class,'nextstore'])->name('demandecidentitestore'); 
+
 
     Route::get('/demandecrrecp',[App\Http\Controllers\receptionniste\Demandescertif::class,'index'])->name('listecerdemandes');
     Route::post('/listedemandecarte',[App\Http\Controllers\receptionniste\Demandescertif::class,'store'])->name('demandecerrecpstore'); 

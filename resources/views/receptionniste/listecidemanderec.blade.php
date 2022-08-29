@@ -50,7 +50,7 @@
 {{-- FIn du modal --}}
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -128,7 +128,7 @@
         <div class="modal-body">
           <h6>Veuillez fournir une copie de piece ou un extrait!</h6>
   
-                <form action="{{ route('demandecidentitestore') }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('carte.create') }}" enctype="multipart/form-data" method="POST">
                   @csrf
   
                   {{-- <div class="form-outline mb-4">
@@ -309,7 +309,7 @@
                             <tr>
                                 <td>{{ $cissan->id }}</td>
                                 <td>{{ $cissan->created_at }}</td>
-                                <td>{{ $cissan->Status }}</td>
+                                <td>{{ $cissan->status }}</td>
                                 <td><a href="{{ url('carte/d_identite/'.$cissan->document) }}" download>Fichier</a></td>                                             
                                 <td>
                                     <a href="{{ url('carte/d_identite/'.$cissan->document) }}" view class="btn btn-sm label btn-primary">Voir</a>

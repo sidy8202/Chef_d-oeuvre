@@ -118,9 +118,70 @@
       </div>
     </div>
   </div>
+  {{-- Fin demande --}}
   
+  {{-- Debut rejet --}}
+
+       <div class="modal fade" id="rejetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Formulaire de rejet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                  <h6>Veuillez s'il vous plait mentionner le motif du rejet de la demande</h6>
+                <form action="" id="rejetform"enctype="multipart/form-data" method="POST">
+                      @csrf
+
+                  <div class="form-outline mb-4">
+                        <label class="form-label" name="motif" id= for="form3Example1q">Motif du Rejet</label>
+                        <textarea name="motifrejet"  id="motifrejet" class="form-control" cols="30" rows="3"></textarea>
+                        {{-- <input type="text" id="form3Example1q" class="form-control" name="objet"> --}}
+                  </div>
+
+                  <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example1q">Objet</label>
+                      <textarea name="objet" id="objet" class="form-control" cols="30" rows="3"></textarea>
+                      {{-- <input type="text" id="form3Example1q" class="form-control" name="objet"> --}}
+                  </div>
   
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q">Piece du logeur</label>
+                    <input type="file" id="" class="form-control" name="document">
+                  </div>
   
+                  {{-- <div class="row">
+                    <div class="col mb-4">
+                      <div class="form-outline datepicker">
+                        <label for="exampleDatepicker1" class="form-label">Copie d'extrait </label>
+                        <input type="file" class="form-control" id="exampleDatepicker1" name="adresse"/>
+                      </div>
+  
+                    </div>
+                    <div class="col-md mb-4">
+                      <label for="exampleDatepicker1" class="form-label">Attestation ou diplome</label>
+                      <input type="file" class="form-control" id="exampleDatepicker1" name="phone"/>
+                    </div>
+                  </div> --}}
+  
+                  
+  
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                      <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
+  
+                </form>    
+                
+        </div>
+                    
+                  
+      </div>
+    </div>
+  </div>      
+
+  {{-- Fin rejet --}}
       @if(count($errors) > 0)
   <div class=" alert alert-danger">
       <ul>
@@ -187,7 +248,7 @@
                                   <td>
                                     <a href="{{ url('certi/residencee'.$abai->document) }}" target="_blank" class="label btn-primary btn-sm" view >Voir</a>
                                     <a href="#" class="label label-success btn-sm" data-id="{{ $abai->id }}" id="conf">Valider</a>
-                                    <a href="#" class="label label-danger  btn-sm ">rejetter</a>
+                                    <a href="#" id="rejet" class="label label-danger rejet btn-sm ">rejetter</a>
                                 </td>                                  
                               </tr>
                               @endforeach
@@ -304,10 +365,10 @@
       </div>
   </div>
 
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  
 
 <script>
     $(document).ready( function () {
@@ -327,4 +388,37 @@ $('#id').val(id);
 $('#confModal').modal('show');
 });
 </script>
+
+@endsection
+
+
+@section('scripts')
+  <script type="text/javascript">
+
+    // var id_vols = $(this).val();
+    // alert(id) #editModal;
+    
+    $(document).ready(function() {
+    
+    var table = $('#datatable').DataTable();
+    
+    
+    table.on('click','.rejet', function() {
+    
+    
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')){
+            $tr = $tr.prev('.parent');
+        }
+        var data = table.row($tr).data();
+        console.log(data);
+        $('#type').val(data[1]);
+        $('#status').val(data[2]);
+        $('#objet').val(data[3]);
+        $('#motifrejet').val(data[4]);
+        $('#rejetform').attr('action', '/vol/'+data[0]);
+        $('#rejetModal').modal('show');
+    });
+  });
+    
 @endsection
