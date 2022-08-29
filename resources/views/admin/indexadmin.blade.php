@@ -143,7 +143,7 @@
                            <li class="user-profile header-notification">
                                <a href="#!">
                                    <img src="{{ asset('assets/dashboard/assets/images/avatar-4.jpg') }}" class="img-radius" alt="User-Profile-Image">
-                                   <span>John Doe</span>
+                                   <span>{{ Auth::user()->prenom }}  {{ Auth::user()->nom }}</span>
                                    <i class="ti-angle-down"></i>
                                </a>
                                <ul class="show-notification profile-notification">
@@ -204,14 +204,14 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="{{ url('listecidemande') }}">
+                                            <a href="{{ route('adminokay') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Carte d'identité</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="{{ url('listecrdemandes') }}">
+                                            <a href="">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Certificat de residence</span>
                                                 <span class="pcoded-mcaret"></span>
@@ -296,7 +296,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="{{ url('admin.creadmin') }}">
+                                            <a href="{{ url('creadmin') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Admins</span>
                                                 <span class="pcoded-mcaret"></span>
@@ -322,23 +322,23 @@
 
                             </ul>
 
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Les  &amp; utlisateurs</div>
+                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Les  Paiements</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li>
                                     <a href="chart.html">
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Chart</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Paiements</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="map-google.html">
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.form-components.main">Maps</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                </li>
-                                <li class="pcoded-hasmenu">
+                                </li> --}}
+                                {{-- <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
                                         <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Tous les utilisateurs</span>
@@ -367,11 +367,11 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
 
-                            </ul>
+                            </ul> 
 
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.other">Other</div>
+                            {{-- <div class="pcoded-navigatio-lavel" data-i18n="nav.category.other">Other</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-hasmenu ">
                                     <a href="javascript:void(0)">
@@ -413,7 +413,7 @@
 
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </nav>
 

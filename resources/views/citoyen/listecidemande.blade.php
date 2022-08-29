@@ -1,10 +1,10 @@
-@extends('admin.indexadmin')
+@extends('citoyen.indexcitoi')
 
 @section( 'contenues')
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+{{-- <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Demander
-</button>
+</button> --}}
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -15,18 +15,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h6>Veuillez fourinir une copie de piece ou un extrait</h6>
+        <h6>Veuillez fournir une copie de piece ou un extrait!</h6>
 
-              <form action="{{ url('/listecidemande') }}" enctype="multipart/form-data" method="POST">
+              <form action="{{ route('demandeci') }}" enctype="multipart/form-data" method="POST">
                 @csrf
 
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example1q">Type de demande</label>
-                  <input type="text" id="form3Example1q" class="form-control" name="type">
+                    <label class="form-label" for="form3Example1q">Taille</label>
+                    <input type="text" id="form3Example1q" class="form-control" name="taille">
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q">Teint</label>
+                    <input type="text" id="form3Example1q" class="form-control" name="teint">
                 </div>
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example1q">Objet</label>
-                  <input type="text" id="form3Example1q" class="form-control" name="objet">
+                  <textarea id="form3Example1q" class="form-control" name="objet" cols="60" rows="5"></textarea>
                 </div>
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example1q">Anncienne piece ou extrait</label>
@@ -35,18 +39,16 @@
                 
 
                 {{-- <div class="row">
+                    {{-- <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example1q">Type de demande</label>
+                      <input type="text" id="form3Example1q" class="form-control" name="type">
+                    </div> --}}
                   <div class="col mb-4">
-                    <div class="form-outline datepicker">
-                      <label for="exampleDatepicker1" class="form-label">Copie d'extrait </label>
-                      <input type="file" class="form-control" id="exampleDatepicker1" name="adresse"/>
-                    </div>
+                    
 
                   </div>
-                  <div class="col-md mb-4">
-                    <label for="exampleDatepicker1" class="form-label">Attestation ou diplome</label>
-                    <input type="file" class="form-control" id="exampleDatepicker1" name="phone"/>
-                  </div>
-                </div> --}}
+                  
+                </div> 
 
                 
 
@@ -63,22 +65,7 @@
     </div>
   </div>
 </div>
-    @if(count($errors) > 0)
-    <div class=" alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>    
-
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
-    @if (session('success'))
-    <div class="alert alert-success">
-        <p>{{ session('success') }}</p>
-    </div> 
-    @endif
+    
     @if(count($errors) > 0)
 <div class=" alert alert-danger">
     <ul>
@@ -101,22 +88,23 @@
     <div class="card tabs-card">
         <div class="card-block p-0">
             <!-- Nav tabs -->
+            
             <ul class="nav nav-tabs md-tabs" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>Home</a>
+                <li class="nav-item">                    
+                    <a class="nav-link active " data-toggle="tab" href="#home3" role="tab" ><i class="fa fa-home"></i>La liste de mes demandes </a>                                                
                     <div class="slide"></div>
                 </li>
                 
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-key"></i></a>
+                        <div class="slide"></div>
+                    </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#profile3" role="tab"><i class="fa fa-key"></i>Security</a>
+                    <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-play-circle"></i></a>
                     <div class="slide"></div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#messages3" role="tab"><i class="fa fa-play-circle"></i>Entertainment</a>
-                    <div class="slide"></div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#settings3" role="tab"><i class="fa fa-database"></i>Big Data</a>
+                    <a class="nav-link text-white" style="background-color:blue" data-toggle="tab" href="#" role="tab" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-database"></i>Nouvelle Demande</a>
                     <div class="slide"></div>
                 </li>
             </ul>
@@ -126,30 +114,41 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered">
+                            <h5>{{$ayira->count()}}</h5>
                             <tr>
                                 <th>No Demande</th>
                                 <th>Date Demande</th>
-                                <th>Demandeur</th>
                                 <th>Status</th>
+                                <th>Document envoyé</th>
                                 <th>Actions</th>
                                 
+                                
                             </tr>
+                            @if ($ayira->count()>0)
+                                
+                            @foreach ($ayira as $cissan )
+                                 
                             <tr>
-                                <td><img src="assets/images/product/prod2.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002344</td>
-                                <td>John Deo</td>
-                                <td><span class="label label-warning">En cours</span></td>              
+                                <td>{{ $cissan->id }}</td>
+                                <td>{{ ($cissan->created_at) }}</td>
+                                <td>{{ ($cissan->status) }}</td>
+
+
+                                <td><a href="{{ url('carte/d_identite/'.$cissan->document) }}" download>Fichier</a></td>
+                                             
                                 <td>
-                                  <span class="label label-success">Valider</span>
-                                  <span class="label label-danger">rejetter</span>                              
+                                    <a href="{{ url('carte/d_identite/'.$cissan->document) }}" view class="btn btn-sm label btn-primary">Voir</a>
+                                
+                                                               
                                 </td>
                                 
                             </tr>
-                          
+                            @endforeach
+                            @endif
                         </table>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
+                        <button class="btn btn-outline-primary btn-round btn-sm">Plus</button>
                     </div>
                 </div>
                 <div class="tab-pane" id="profile3" role="tabpanel">

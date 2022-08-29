@@ -13,7 +13,15 @@ class demandesci extends Model
     [
             'objet',
             'type',
+            'motifrejet',    
             'id_users',
-        'document'
+            'status',
+            'document'
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class,'id_users');
+
+    }
 }

@@ -17,6 +17,7 @@ class citoyens extends Model
         'phone',	
         'email',	
         'username',
+        'profile_img',
         'password',
         'id_users'
     ];

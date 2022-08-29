@@ -59,7 +59,6 @@ class Receptionnistekoura extends Controller
                             );                          
                             return view('receptionniste.crerecp');
                             
-
                     }
                 }
      }         

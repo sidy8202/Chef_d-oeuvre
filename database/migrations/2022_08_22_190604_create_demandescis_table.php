@@ -16,9 +16,16 @@ class CreateDemandescisTable extends Migration
         Schema::create('demandescis', function (Blueprint $table) {
             $table->id();
             $table->string('type'); 
-            $table->string('objet'); 
+            $table->string('teint'); 
+            $table->string('taille'); 
+            $table->string('objet');
+
             
             $table->string('document')->nullable();
+            $table->string('motifrejet')->nullable();
+            $table->string('status')->nullable();
+
+            
 
             $table->unsignedBigInteger("id_users");
             $table->foreign('id_users')

@@ -13,21 +13,24 @@ use Illuminate\Support\Facades\Validator;
 class Demandescarte extends Controller
 {
     public function index()
-    {
-        return view('listecidemande');
+    {   
+        $user = Auth::user();
+        $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
+        
+        return view('citoyen.listecidemande',compact('user','ayira'));
     }
 
-    public function viewcr()
-    {
-        return view('listecrdemandes');
-    }
+    // public function viewcr()
+    // {
+    //     return view('citoyen.listecrdemandes');
+    // }
 
     public function store (Request $request)
     {
         $user = Auth::User();
         $ikason = $request->validate([
             
-            'type'=>'required',
+            
             'objet'=>'required',
             'document' => 'required|mimes:pdf|max:1000',
                                     
@@ -43,7 +46,8 @@ class Demandescarte extends Controller
             $cissan = demandesci::create(
                 [
                     'document'=>$fileName,
-                    'type'=>$request['type'],
+                    'type' => 'carte d_identite',
+                    'status' => 'En cours',
                     'objet'=>$request['objet'],
                     'id_users'=>$user->id,
                     
@@ -51,7 +55,7 @@ class Demandescarte extends Controller
             );
         }
    
-        return redirect('listecidemande')->with('success', 'courrier receptionné avec succèss!!!');
+        return redirect('listecidemande')->with('success', 'Votre demande a eté envoyée avec succèss!!!');
     }
    
 }

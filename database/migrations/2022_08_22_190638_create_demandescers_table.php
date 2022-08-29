@@ -19,6 +19,10 @@ class CreateDemandescersTable extends Migration
             $table->string('objet'); 
             
             $table->string('document')->nullable();
+            $table->string('motifrejet')->nullable();
+            $table->string('status')->nullable();
+
+
 
             $table->unsignedBigInteger("id_users");
             $table->foreign('id_users')

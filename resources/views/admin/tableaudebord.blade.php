@@ -29,8 +29,8 @@
                                                 <div class="card bg-c-yellow order-card">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20"> Retraits</h6>
-                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>$42,562</span></h2>
-                                                        <p class="m-b-0">This Month<span class="f-right">$5,032</span></p>
+                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>15000</span></h2>
+                                                        <p class="m-b-0">Ce mois<span class="f-right">1000</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -38,8 +38,8 @@
                                                 <div class="card bg-c-pink order-card">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20">Utilisateurs</h6>
-                                                        <h2 class="text-right"><i class="ti-wallet f-left"></i><span>$9,562</span></h2>
-                                                        <p class="m-b-0">This Month<span class="f-right">$542</span></p>
+                                                        <h2 class="text-right"><i class="ti-wallet f-left"></i><span>100</span></h2>
+                                                        <p class="m-b-0">Ce mois<span class="f-right">15</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -80,7 +80,7 @@
                                                             </div>
                                                             <div class="col-auto m-t-5 m-b-5">
                                                                 <h4>17%</h4>
-                                                                <p class="text-danger m-b-0"><i class="ti-hand-point-down m-r-5"></i>Negative</p>
+                                                                <p class="text-danger m-b-0"><i class="ti-hand-point-down m-r-5"></i>Rejetées</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -92,7 +92,7 @@
                                                 <div class="card tabs-card">
                                                     <div class="card-block p-0">
                                                         <!-- Nav tabs -->
-                                                        <ul class="nav nav-tabs md-tabs" role="tablist">
+                                                        {{-- <ul class="nav nav-tabs md-tabs" role="tablist">
                                                             <li class="nav-item">
                                                                 <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>Home</a>
                                                                 <div class="slide"></div>
@@ -109,9 +109,9 @@
                                                                 <a class="nav-link" data-toggle="tab" href="#settings3" role="tab"><i class="fa fa-database"></i>Big Data</a>
                                                                 <div class="slide"></div>
                                                             </li>
-                                                        </ul>
+                                                        </ul> --}}
                                                         <!-- Tab panes -->
-                                                        <div class="tab-content card-block">
+                                                        {{-- <div class="tab-content card-block">
                                                             <div class="tab-pane active" id="home3" role="tabpanel">
 
                                                                 <div class="table-responsive">
@@ -256,14 +256,14 @@
                                                                     <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- tabs card end -->
 
                                             <!-- social statustic start -->
-                                            <div class="col-md-12 col-lg-4">
+                                            {{-- <div class="col-md-12 col-lg-4">
                                                 <div class="card">
                                                     <div class="card-block text-center">
                                                         <i class="fa fa-envelope-open text-c-blue d-block f-40"></i>
@@ -272,8 +272,8 @@
                                                         <button class="btn btn-primary btn-sm btn-round">Manage List</button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4">
+                                            </div> --}}
+                                            {{-- <div class="col-md-6 col-lg-4">
                                                 <div class="card">
                                                     <div class="card-block text-center">
                                                         <i class="fa fa-twitter text-c-green d-block f-40"></i>
@@ -282,8 +282,8 @@
                                                         <button class="btn btn-success btn-sm btn-round">Check them out</button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4">
+                                            </div> --}}
+                                            {{-- <div class="col-md-6 col-lg-4">
                                                 <div class="card">
                                                     <div class="card-block text-center">
                                                         <i class="fa fa-puzzle-piece text-c-pink d-block f-40"></i>
@@ -292,11 +292,11 @@
                                                         <button class="btn btn-danger btn-sm btn-round">Upgrade to VIP</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- social statustic end -->
 
                                             <!-- users visite and profile start -->
-                                            <div class="col-md-4">
+                                            {{-- <div class="col-md-4">
                                                 <div class="card user-card">
                                                     <div class="card-header">
                                                         <h5>Profile</h5>
@@ -341,8 +341,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8">
+                                            </div> --}}
+                                            {{-- <div class="col-md-8">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h5>Activity Feed</h5>
@@ -404,7 +404,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- users visite and profile end -->
 
                                         </div>

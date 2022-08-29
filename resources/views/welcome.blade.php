@@ -27,6 +27,8 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
+
+
   <!-- =======================================================
   * Template Name: BizLand - v3.8.1
   * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
@@ -43,16 +45,16 @@
 <div class="modal fade" id="infos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Allons y pour la creéation de compte</h5>
+      <div class="modal-header" style="background-color: #0972a1">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Allons y pour la création de compte</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h6>Veuiller d'abord créer un compte</h6>
+        <h6>Veuillez d'abord créer un compte</h6>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Plustard</button>
-        <button type="button" class="btn btn-primary">Maintenat</button>
+        <button type="button" class="btn btn-primary">Maintenant</button>
       </div>
     </div>
   </div>
@@ -73,7 +75,7 @@
                     @csrf
 
                     <div class="row mb-3">
-                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Email Address') }}</label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -87,7 +89,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Mot de passe') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Mot de passe') }}</label>
 
                         <div class="col-md-6">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -144,13 +146,13 @@
                   {{-- Try --}}                      
 
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example1q">Nom</label>
-                  <input type="text" id="form3Example1q" class="form-control" name="nom"/>
+                  <label class="form-label fw-bold" for="form3Example1q">Nom</label>
+                  <input type="text" id="form3Example1q" placeholder="Votre Nom à l'etat Civil" class="form-control" name="nom"/>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example1q">Prenom</label>
-                  <input type="text" id="form3Example1q" class="form-control" name="prenom"/>
+                  <label class="form-label fw-bold" for="form3Example1q">Prenom</label>
+                  <input type="text" id="form3Example1q" placeholder="Votre Prenom à l'etat Civil" class="form-control" name="prenom"/>
                 </div>
 
                 <div class="row">
@@ -170,7 +172,7 @@
                 <div class="row">
                   <div class="col mb-4">
                     <div class="form-outline datepicker">
-                      <label for="exampleDatepicker1" class="form-label">Email</label>
+                      <label for="exampleDatepicker1" class="form-label fw-bold">Email</label>
                       <input type="email" class="form-control" id="exampleDatepicker1" name="email" class="form-control validate"  @error('email') is-invalid @enderror"  value="{{ old('email') }}" required autocomplete="email"/>
 
                       @error('email')
@@ -182,7 +184,7 @@
 
                   </div>
                   <div class="col-md mb-4">
-                    <label for="exampleDatepicker1" class="form-label">Username</label>
+                    <label for="exampleDatepicker1" class="form-label fw-bold">Nom d'utilisateur</label>
                     <input type="text" class="form-control" id="exampleDatepicker1" name="username"/>
                   </div>
                 </div>
@@ -190,7 +192,7 @@
                 <div class="row">
                   <div class="col mb-4">
                     <div class="form-outline datepicker">
-                      <label for="exampleDatepicker1" class="form-label" >Mot de passe</label>
+                      <label for="exampleDatepicker1" class="form-label fw-bold" >Mot de passe</label>
                       <input type="password" class="form-control" id="exampleDatepicker1" name="password" @error('password') is-invalid @enderror"  required autocomplete="new-password"/>
                           @error('email')
                           <span class="invalid-feedback" role="alert">
@@ -201,7 +203,7 @@
 
                   </div>
                   <div class="col-md mb-4">
-                    <label for="exampleDatepicker1" class="form-label">Confirmer</label>
+                    <label for="exampleDatepicker1" class="form-label fw-bold">Confirmer</label>
                     <input type="password" class="form-control" id="exampleDatepicker1" name="password_confirmation" required autocomplete="new-password"/>
                   </div>
                 </div>           
@@ -294,7 +296,7 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
       <h1>Bienvenue sur <span>Faso Doc</span></h1>
-      <h2>Plus besoin de vous deplacer pour demander *****************************</h2>
+      <h2>Plus besoin de vous deplacer pour demander une carte d'idendité nationale  </h2>
       <div class="d-flex">
         <a href="#about" class="btn-get-started scrollto">Details</a>
         <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Un Mali Innovant</span></a>
@@ -363,27 +365,27 @@
           <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <h3>Les raisons derrière la creation de Faso Doc? Un brief sur comment l'utiliser!</h3>
             <p class="fst-italic">
-              Faso Doc est une application web créee dans le but de reduire la longue fil d'attente devant nos administration public, de digitaliser le systeme de demande des documents administratifs afin de permettre aux citoyens maliens de facilement obtenir certains documents administratif de facon facile, rapide et efficace.
+              Faso Doc est une application web créee dans le but de reduire la longue fil d'attente devant nos administrations publics, d'augmenter le taux de production de documents par jour, de digitaliser le systeme de demande des documents administratifs afin de permettre aux citoyens maliens de facilement obtenir certains documents administratif de facon facile, rapide et efficace.
 
             </p>
             <ul>
               <li>
                 <i class="bx bx-store-alt"></i>
                 <div>
-                  <h5>Parce qu'on veut un Mali Innovant</h5>
-                  <p>Le Mali innovant est pas de plus vers le develeppement.</p>
+                  <h5>Parce qu'on veut la rapidité de traitement de document</h5>
+                  <p>Les dossiers sont envoyé en ligne donc on a tout de suite tous les documents devant.</p>
                 </div>
               </li>
               <li>
                 <i class="bx bx-images"></i>
                 <div>
-                  <h5>Parce que les maliens le meritent</h5>
-                  <p>Après plusieurs années avec l'utilisation de la methode classique, les maliens meritent d'en profiter pleinement de cette innovation. </p>
+                  <h5>L'elevation du nombre de carte d'identité par jour</h5>
+                  <p>Plus le traitement est rapide plus il aura des cartes à retirer. </p>
                 </div>
               </li>
             </ul>
             <p>
-              L'application est très facile à utiliser, il suffit juste de pointer votre cursuer sur le option compte dans le menu, ensuite cliquer sur créer un compte. Maintenant que le compte est crée il ne vous reste que de vous connecter et le tour est joué. Après la connexion vous serez rediriger vers votre tableau de board et vous pourrez ensuite profiter de tous nos service.
+              L'application est très facile à utiliser, il suffit juste de pointer votre curseur sur le option compte dans le menu, ensuite cliquer sur créer un compte. Maintenant que le compte est crée il ne vous reste que de vous connecter et le tour est joué. Après la connexion vous serez rediriger vers votre tableau de board et vous pourrez ensuite profiter de tous nos service.
              
             </p>
           </div>
@@ -896,7 +898,7 @@
         <div class="section-title">
           <h2>Prix des services</h2>
           <h3>Le <span>Prix </span>et document à fournir</h3>
-          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+          <p>La liste de prix la liste des services que Faso Doc offre.</p>
         </div>
 
         <div class="row">
@@ -1182,7 +1184,7 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Nos réseaux sociaux</h4>
-            <p>Nous sommes aussi présents sur ces differents réseau sociaux afin de rester en contact direct avec le maliens. Merci de vous abonner à nos differentes pages</p>
+            <p>Nous sommes aussi présents sur ces differents réseaux sociaux afin de rester en contact direct avec les maliens. Merci de vous abonner à nos differentes pages</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>

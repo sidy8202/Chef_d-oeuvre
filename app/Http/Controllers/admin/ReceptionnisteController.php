@@ -9,12 +9,16 @@ use App\Models\receptionnistes;
 use App\Models\admins;
 use App\Models\User;
 use App\Models\citoyens;
+use App\Models\demandesci;
+use App\Models\demandescer;
 
 class ReceptionnisteController extends Controller
 {
     public function dashboard()
     {
-        return view('receptionniste.dashboard');
+        $ayira = demandesci::all();
+        $nanayé = demandescer::all();
+        return view('receptionniste.dashboard', compact('ayira','nanayé'));
     }
 
     public function rendezvous()

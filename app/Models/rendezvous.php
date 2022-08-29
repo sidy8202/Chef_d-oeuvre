@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class rendezvous extends Model
 {
     use HasFactory;
+    protected $fillable =
+    [       			
+        'commentaires',
+        'daterdv',
+        'id_demandesci',
+        'id_demandescer',
+    ];
 }

@@ -1,7 +1,7 @@
 @extends('admin.indexadmin')
 
 @section( 'contenues') 
-<form action="{{ URL('/recepadd') }}" method="POST">
+<form action="{{ URL('/addrecept') }}" method="POST">
     @csrf
 
       <div class="md-form mb-5">

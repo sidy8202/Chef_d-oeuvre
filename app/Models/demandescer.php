@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class demandescer extends Model
 {
     use HasFactory;
+    protected $fillable =
+    [
+        'objet',
+        'motifrejet',    
+        'id_users',
+        'document',
+        'status'
+    ];
 }

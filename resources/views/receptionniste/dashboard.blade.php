@@ -1,28 +1,28 @@
-@extends('admin.indexadmin')
+@extends('receptionniste.indexrecep')
 
 @section( 'contenues')
 
-<h2>Receptionniste</h2>
-         <div class="page-wrapper">
-
-            <div class="page-body">
-              <div class="row">
-
+<div class="page-wrapper">
+    
+    <div class="page-body">
+        <div class="row">
+                  
+                    <h2>Receptionniste</h2>
                                             <!-- order-card start -->
                                             <div class="col-md-6 col-xl-3">
-                                                <div class="card bg-c-blue order-card">
+                                                <div class="card bg-c-blue order-card" onclick="location.href='{{ url('demandecirecp') }}';" style="cursor: pointer">
                                                     <div class="card-block">
-                                                        <h6 class="m-b-20">Demandes</h6>
-                                                        <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>486</span></h2>
+                                                        <h6 class="m-b-20">Cartes d'identités</h6>
+                                                        <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>{{ $ }}</span></h2>
                                                         <p class="m-b-0">Cette semaine<span class="f-right">351</span></p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xl-3">
-                                                <div class="card bg-c-green order-card">
+                                                <div class="card bg-c-green order-card" onclick="location.href='{{ url('demandecrecp') }}';" style="cursor: pointer">
                                                     <div class="card-block">
-                                                        <h6 class="m-b-20">Rendez Vous</h6>
-                                                        <h2 class="text-right"><i class="ti-tag f-left"></i><span>1641</span></h2>
+                                                        <h6 class="m-b-20">Certificats Residences</h6>
+                                                        <h2 class="text-right"><i class="ti-tag f-left"></i><span>{{$ayira->count()}}</span></h2>
                                                         <p class="m-b-0">Cette semaine<span class="f-right">213</span></p>
                                                     </div>
                                                 </div>
@@ -31,8 +31,8 @@
                                                 <div class="card bg-c-yellow order-card">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20"> Retraits</h6>
-                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>$42,562</span></h2>
-                                                        <p class="m-b-0">This Month<span class="f-right">$5,032</span></p>
+                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>18562</span></h2>
+                                                        <p class="m-b-0">Ce mois<span class="f-right">1032</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -40,8 +40,8 @@
                                                 <div class="card bg-c-pink order-card">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20">Utilisateurs</h6>
-                                                        <h2 class="text-right"><i class="ti-wallet f-left"></i><span>$9,562</span></h2>
-                                                        <p class="m-b-0">This Month<span class="f-right">$542</span></p>
+                                                        <h2 class="text-right"><i class="ti-wallet f-left"></i><span>1500</span></h2>
+                                                        <p class="m-b-0">Ce mois<span class="f-right">542</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,7 +82,7 @@
                                                             </div>
                                                             <div class="col-auto m-t-5 m-b-5">
                                                                 <h4>17%</h4>
-                                                                <p class="text-danger m-b-0"><i class="ti-hand-point-down m-r-5"></i>Negative</p>
+                                                                <p class="text-danger m-b-0"><i class="ti-hand-point-down m-r-5"></i>Rejetées</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -90,7 +90,7 @@
                                             </div>
                                             <!-- statustic and process end -->
 											<!-- tabs card start -->
-                                            <div class="col-sm-12">
+                                            {{-- <div class="col-sm-12">
                                                 <div class="card tabs-card">
                                                     <div class="card-block p-0">
                                                         <!-- Nav tabs -->
@@ -261,11 +261,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- tabs card end -->
 
                                             <!-- social statustic start -->
-                                            <div class="col-md-12 col-lg-4">
+                                            {{-- <div class="col-md-12 col-lg-4">
                                                 <div class="card">
                                                     <div class="card-block text-center">
                                                         <i class="fa fa-envelope-open text-c-blue d-block f-40"></i>
@@ -274,8 +274,8 @@
                                                         <button class="btn btn-primary btn-sm btn-round">Manage List</button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4">
+                                            </div> --}}
+                                            {{-- <div class="col-md-6 col-lg-4">
                                                 <div class="card">
                                                     <div class="card-block text-center">
                                                         <i class="fa fa-twitter text-c-green d-block f-40"></i>
@@ -284,8 +284,8 @@
                                                         <button class="btn btn-success btn-sm btn-round">Check them out</button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4">
+                                            </div> --}}
+                                            {{-- <div class="col-md-6 col-lg-4">
                                                 <div class="card">
                                                     <div class="card-block text-center">
                                                         <i class="fa fa-puzzle-piece text-c-pink d-block f-40"></i>
@@ -294,11 +294,11 @@
                                                         <button class="btn btn-danger btn-sm btn-round">Upgrade to VIP</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- social statustic end -->
 
                                             <!-- users visite and profile start -->
-                                            <div class="col-md-4">
+                                            {{-- <div class="col-md-4">
                                                 <div class="card user-card">
                                                     <div class="card-header">
                                                         <h5>Profile</h5>
@@ -343,8 +343,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8">
+                                            </div> --}}
+                                            {{-- <div class="col-md-8">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h5>Activity Feed</h5>
@@ -406,7 +406,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- users visite and profile end -->
 
                                         </div>

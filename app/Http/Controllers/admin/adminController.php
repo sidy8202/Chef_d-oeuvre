@@ -26,7 +26,8 @@ class adminController extends Controller
 
     public function view()
     {
-        return view('admin.tableaudebord');
+        $commissaire = admins::all();      
+        return view('admin.tableaudebord',compact('commissaire'));
     }
 
     public function create()

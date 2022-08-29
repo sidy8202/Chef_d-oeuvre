@@ -16,14 +16,15 @@ class CreateRendezvousesTable extends Migration
         Schema::create('rendezvouses', function (Blueprint $table) {
             $table->id();
             $table->string('commentaires');
-
-            $table->unsignedBigInteger("id_demandesci");
+            $table->date_time_set('daterdv')->nullable();
+            
+            $table->unsignedBigInteger("id_demandesci")->nullable();
             $table->foreign('id_demandesci')
                 ->references('id')
                 ->on('demandescis')
                 ->onDelete('cascade');
 
-                $table->unsignedBigInteger("id_demandescer");
+                $table->unsignedBigInteger("id_demandescer")->nullable();
                 $table->foreign('id_demandescer')
                     ->references('id')
                     ->on('demandescers')

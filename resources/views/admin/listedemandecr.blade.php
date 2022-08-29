@@ -1,6 +1,7 @@
 @extends('admin.indexadmin')
 
 @section( 'contenues')
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Demander
@@ -15,29 +16,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-
-              <form action="{{URL('/demandes') }}" method="POST">
-
-                <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example1q">Piece du logeur</label>
-                  <input type="file" id="form3Example1q" class="form-control" name="apiece">
-                </div>
+                <h6>Veuillez fournir la pièce de votre logeur</h6>
+              <form action="{{ route('admintabla') }}" enctype="multipart/form-data" method="POST">
+                    @csrf
 
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example1q">Votre piece</label>
-                  <input type="file" id="form3Example1q" class="form-control" name="extrait">
-                </div>
-
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example1q">Une facture d'eclectricité recente</label>
-                    <input type="file" id="form3Example1q" class="form-control" name="extrait">
+                    <label class="form-label" for="form3Example1q">Objet</label>
+                    <input type="text" id="form3Example1q" class="form-control" name="objet">
                   </div>
 
                 <div class="form-outline mb-4">
-                  <input type="hidden" value="carte_didentite" name="type">
-                  <input type="" id="form3Example1q" class="form-control">
+                  <label class="form-label" for="form3Example1q">Piece du logeur</label>
+                  <input type="file" id="form3Example1q" class="form-control" name="document">
                 </div>
-
 
                 {{-- <div class="row">
                   <div class="col mb-4">
@@ -68,22 +59,9 @@
     </div>
   </div>
 </div>
-    @if(count($errors) > 0)
-    <div class=" alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>    
 
-            @endforeach
-        </ul>
-    </div>
-    @endif
 
-    @if (session('success'))
-    <div class="alert alert-success">
-        <p>{{ session('success') }}</p>
-    </div> 
-    @endif
+
     @if(count($errors) > 0)
 <div class=" alert alert-danger">
     <ul>
@@ -100,6 +78,7 @@
     <p>{{ session('success') }}</p>
 </div> 
 @endif
+
         <!-- tabs card start -->
   <div class="col-sm-12 mt-3">
     <div class="card tabs-card">
@@ -129,27 +108,30 @@
                 <div class="tab-pane active" id="home3" role="tabpanel">
 
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="datatable">
                             <tr>
                                 <th>No Demande</th>
                                 <th>Date Demande</th>
-                                <th>Demandeur</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                                
+                                <th>FIchier Envoyé</th>
+                                <th>Actions</th> 
                             </tr>
+
+                            @foreach ($nanaye as $djona )
+                                
+                            
                             <tr>
-                                <td><img src="assets/images/product/prod2.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002344</td>
-                                <td>John Deo</td>
-                                <td><span class="label label-warning">En cours</span></td>              
-                                <td>
+                                {{-- <td><img src="assets/images/product/prod2.jpg" alt="prod img" class="img-fluid"></td> --}}
+                                <td></td>
+                                <td>{{ $djona->created_at }}</td>
+                                <td><a href="{{ url('certi/residencee'.$djona->document) }}" download>Fichier</a></td>
+                                <td><a href="{{ url('certi/residencee'.$djona->document) }}" target="_blank" view class="label  btn-primary">Voir</span></td>              
+                                {{-- <td>
                                   <span class="label label-success">Valider</span>
                                   <span class="label label-danger">rejetter</span>                              
-                                </td>
+                                </td> --}}
                                 
                             </tr>
-                          
+                            @endforeach
                         </table>
                     </div>
                     <div class="text-center">
@@ -263,4 +245,15 @@
     </div>
 </div>
 <!-- tabs card end -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> 
+    
+     <script>
+        $(document).ready( function () 
+        {
+            $('#datatable').DataTable();
+        } );
+    </script>
+
 @endsection
