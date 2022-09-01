@@ -147,9 +147,9 @@
                             @endif
                         </table>
                     </div>
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <button class="btn btn-outline-primary btn-round btn-sm">Plus</button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="tab-pane" id="profile3" role="tabpanel">
 

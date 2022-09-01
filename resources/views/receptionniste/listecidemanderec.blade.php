@@ -10,7 +10,7 @@
 
 {{-- Rejet demande --}}
 
-{{-- <div class="modal fade" id="rejetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="rejetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -22,30 +22,36 @@
   
                 <form action="" id="rejetForm" enctype="multipart/form-data" method="POST">
                   @csrf
+                  @method('PATCH')
+
                   <input type="" value="" id="id" name="id"/> 
 
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example1q">Objet</label>
-                    <textarea id="form3Example1q" class="form-control" id="objet" name="objet" cols="30" rows="3"></textarea>
+                    <label class="form-label" for="form3Example1q">Motif</label>
+                    <textarea id="form3Example1q" class="form-control" id="objet" name="motifrejet" cols="30" rows="3"></textarea>
                   </div>
-                  <div class="form-outline mb-4">
+                  {{-- <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example1q">Anncienne piece ou extrait</label>
                     <input type="file" id="form3Example1q" class="form-control" name="document">
-                  </div>
+                  </div> --}}
   
-                    <div class="modal-footer">
+                    {{-- <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                       <button type="submit" class="btn btn-primary">Envoyer</button>
-                    </div>
+                    </div> --}}
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary center" data-bs-dismiss="modal">Annuler</button>
+                      <button type="submit" class="btn btn-primary center">Envoyer</button>
+                    </div>    
   
                 </form>    
                 
         </div>
-                    
-                  
+                                      
       </div>
     </div>
-</div> --}}
+</div> 
 
 {{-- FIn du modal --}}
 
@@ -198,7 +204,9 @@
         <div class="modal-body"> 
                 <form action="{{ route('confirmdemandeci') }}" enctype="multipart/form-data" method="POST">
                   @csrf
-                  <input type="hidden" id="id" name="id_demandesci">
+                  {{-- <input type="" id="id" name="id_demandescer"> --}}
+                  <input type="" value="" id="iduse" name="id_demandesci"/> 
+
                     
                   {{-- <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example1q">Type de demande</label>
@@ -313,8 +321,10 @@
                                 <td><a href="{{ url('carte/d_identite/'.$cissan->document) }}" download>Fichier</a></td>                                             
                                 <td>
                                     <a href="{{ url('carte/d_identite/'.$cissan->document) }}" view class="btn btn-sm label btn-primary">Voir</a>
-                                    <button class="btn btn-sm btn-success label" data-id="{{ $cissan->id }}" id="conf" onclick="disable(this)">val</button>
-                                    <a href="#" class="btn btn-sm btn-danger label rejet">Rej</button>                                          
+                                    {{-- <a href="#" class="btn btn-sm btn-success label" data-id="{{ $cissan->id }}" id="conf">val</button> --}}
+                                    <a href="#" class="btn btn-sm btn-success label" data-id="{{ $cissan->id }}" id="confir">val</button>
+                                    <a href="{{ route('carterejeter', $cissan->id) }}" class="btn btn-sm btn-danger label"  id="rej">Rej</button>                                          
+                                                                                
                                 </td>                                
                             </tr>
 
@@ -447,49 +457,30 @@
 
 
 <script>
-    $(document).on('click','#conf', function (){ 
+  $(document).on('click','#confir', function (){ 
 
-// alert('Hello');
 var id = $(this).attr('data-id')
-$('#id').val(id);
+$('#iduse').val(id);
 
 $('#confModal').modal('show');
 });
 </script>
 
-{{-- // rejet as edit --}}
+
+{{-- Rejetter Demande --}}
+
+<script>
+  $(document).on('click','#rejet', function (){ 
+
+var id = $(this).attr('data-id')
+$('#id').val(id);
+
+$('#rejetModal').modal('show');
+});
+</script>
+
+{{--Fin rejet --}}
 @endsection
 @section('scripts')
-<script>
 
-$(document).ready(function() {
-
-var table = $('#datatable').DataTable();
-
-
-table.on('click','.rejet', function() {
-
-
-    $tr = $(this).closest('tr');
-    if ($($tr).hasClass('child')){
-        $tr = $tr.prev('.parent');
-    }
-    var data = table.row($tr).data();
-    console.log(data);
-
-    $('#cod').val(data[1]);
-    $('#dest').val(data[2]);
-    $('#dates').val(data[3]);
-    $('#heures').val(data[4]);
-    $('#classa').val(data[5]);
-    $('#pclassa').val(data[6]);
-    $('#classb').val(data[7]);
-    $('#pclassb').val(data[8]);
-    $('#rejetForm').attr('action', '/vol/'+data[0]);
-    $('#rejetModal').modal('show');
-});
-});
-
-</script>
-// end rejet 
 @endsection

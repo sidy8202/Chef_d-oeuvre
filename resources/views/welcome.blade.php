@@ -217,7 +217,7 @@
       </div>
     </div>
   </div>
-
+ 
   {{-- End Modal Register --}}
 
   <!-- ======= Top Bar ======= -->

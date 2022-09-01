@@ -10,14 +10,17 @@ use App\Models\admins;
 use App\Models\User;
 
 use App\Models\citoyens;
-
+use App\Models\demandesci;
+use Illuminate\Support\Facades\Auth;
 
 class CitoyenController extends Controller
 {
 
     public function dashboard()
     {
-        return view('citoyen.dashboard');
+        $user = Auth::user();
+        $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
+        return view('citoyen.dashboard', compact('user','ayira'));
     }
     public function index()
     {

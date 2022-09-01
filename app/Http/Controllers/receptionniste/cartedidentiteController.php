@@ -16,6 +16,14 @@ class cartedidentiteController extends Controller
         return view('receptionniste.listecidemanderec',compact('abeyiara'));
     }
 
+    public function rejeter()
+    {
+        return view('receptionniste.rejetcartedidentite');
+    }
+
+    
+    
+
     public function create(Request $request){
         $user = Auth::User();
         $ikason = $request->validate([

@@ -1,19 +1,19 @@
 @extends('citoyen.indexcitoi')
 
 @section( 'contenues')
-
-<h1>Citoyen</h1>
          <div class="page-wrapper">
 
             <div class="page-body">
               <div class="row">
 
                                             <!-- order-card start -->
-                                            <div class="col-md-6 col-xl-4">
-                                                <div class="card bg-c-blue order-card" onclick="location.href='{{ route('demandecitoiyen') }}';" style="cursor: pointer">
+                                            <div class="col-md-6 col-xl-4">  
+                                                {{-- <div class="card  order-card" style="background-color: #0972A1" onclick="location.href='{{ route('demandecitoiyen') }}';" style="cursor: pointer"> --}}
+                                                <div class="card bg-c-blue order-card" style="background-color: #B66639 #0972a1" onclick="location.href='{{ route('demandecitoiyen') }}';" style="cursor: pointer">
+                                                
                                                     <div class="card-block">
-                                                        <h6 class="m-b-20">Demandes</h6>
-                                                        <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>15</span></h2>
+                                                        <h6 class="m-b-20">Carte d'identité</h6>
+                                                        <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>{{$ayira->count()}}</span></h2>
                                                         <p class="m-b-0">Cette semaine<span class="f-right">1</span></p>
                                                     </div>
                                                 </div>
@@ -28,6 +28,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xl-4">
+                                                {{-- <div class="card order-card" style="background-color:#B66639" onclick="location.href='';" style="cursor: pointer"> --}}
                                                 <div class="card bg-c-yellow order-card" onclick="location.href='';" style="cursor: pointer">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20"> Retraits</h6>

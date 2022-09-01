@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class cartedidentite extends Controller
 {
-
+ 
     public function index()
     {
         // $user = Auth::user();
@@ -17,6 +17,8 @@ class cartedidentite extends Controller
         $ayira = demandesci::all();
         return view('receptionniste.listecidemanderec',compact('ayira'));
     }
+
+
 
     public function store(Request $request)
     {

@@ -3,9 +3,9 @@
 @section( 'contenues')
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+{{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Demander
-</button>
+</button> --}}
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,7 +86,7 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs md-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>Home</a>
+                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>Mes demandes de Certificats</a>
                     <div class="slide"></div>
                 </li>
                 
@@ -127,7 +127,7 @@
                                 <td>{{ $djona->status }}</td>
 
                                 <td><a href="{{ url('certi/residencee'.$djona->document) }}" download>Fichier</a></td>
-                                <td><a href="{{ url('certi/residencee'.$djona->document) }}" target="_blank" view class="label  btn-primary">Voir</span></td>              
+                                <td><a href="{{ url('certi/residencee'.$djona->document) }}" class="label btn-primary" view>Voir</span></td>              
                                 {{-- <td>
                                   <span class="label label-success">Valider</span>
                                   <span class="label label-danger">rejetter</span>                              
@@ -137,9 +137,9 @@
                             @endforeach
                         </table>
                     </div>
-                    <div class="text-center">
-                        <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
-                    </div>
+                        {{-- <div class="text-center">
+                            <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
+                        </div> --}}
                 </div>
                 <div class="tab-pane" id="profile3" role="tabpanel">
 

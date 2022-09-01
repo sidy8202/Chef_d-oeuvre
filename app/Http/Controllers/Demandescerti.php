@@ -19,6 +19,7 @@ class Demandescerti extends Controller
         return view('citoyen.listecrdemandes', compact('user','nanaye'));
     }
 
+
     public function store(Request $request)
     {
         $user = Auth::User();
@@ -43,8 +44,7 @@ class Demandescerti extends Controller
                     'type' => 'certificat de residence',
                     'status' => 'En cours',
                     'objet'=>$request['objet'],
-                    'id_users'=>$user->id,
-                    
+                    'id_users'=>$user->id,                    
                 ]
             );
         }

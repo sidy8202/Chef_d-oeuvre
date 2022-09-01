@@ -15,7 +15,7 @@
         <div class="modal-body"> 
                 <form action="{{ route('confirmdemandecr') }}" enctype="multipart/form-data" method="POST">
                   @csrf
-                  <input type="hidden" id="id" name="id_demandescer">
+                  <input type="" id="id" name="id_demandescer">
                     
                   {{-- <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example1q">Type de demande</label>
@@ -131,7 +131,7 @@
         </div>
         <div class="modal-body">
                   <h6>Veuillez s'il vous plait mentionner le motif du rejet de la demande</h6>
-                <form action="" id="rejetform"enctype="multipart/form-data" method="POST">
+                <form action="" id="rejetform" enctype="multipart/form-data" method="POST">
                       @csrf
 
                   <div class="form-outline mb-4">
@@ -211,7 +211,7 @@
                   </li>
                   
                   <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-key"></i></a>
+                      <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-key"></i>Les demandes rejettées</i></a>
                       <div class="slide"></div>
                   </li>
                   <li class="nav-item">
@@ -232,6 +232,8 @@
                               <tr>
                                   <th>No Demande</th>
                                   <th>Date Demande</th>
+                                  <th>Citoyens</th>
+
                                   <th>Status</th>
                                   <th>FIchier Envoyé</th>
                                   <th>Actions</th> 
@@ -243,12 +245,14 @@
                                   {{-- <td><img src="assets/images/product/prod2.jpg" alt="prod img" class="img-fluid"></td> --}}
                                   <td>{{ $abai->id }}</td>
                                   <td>{{ $abai->created_at }}</td>
+                                  <td>{{ $abai->user->nom }}  {{ $abai->user->prenom }}</td>
+
                                   <td>{{ $abai->status }}</td>
                                   <td><a href="{{ url('certi/residencee'.$abai->document) }}" download>Fichier</a></td>
                                   <td>
-                                    <a href="{{ url('certi/residencee'.$abai->document) }}" target="_blank" class="label btn-primary btn-sm" view >Voir</a>
+                                    <a href="{{ url('certi/residencee'.$abai->document) }}"  class="label btn-primary btn-sm" view >Voir</a>
                                     <a href="#" class="label label-success btn-sm" data-id="{{ $abai->id }}" id="conf">Valider</a>
-                                    <a href="#" id="rejet" class="label label-danger rejet btn-sm ">rejetter</a>
+                                    <a href="{{ route('certerejet', $abai->id) }}" id="rejet" class="label label-danger rejet btn-sm ">rejetter</a>
                                 </td>                                  
                               </tr>
                               @endforeach

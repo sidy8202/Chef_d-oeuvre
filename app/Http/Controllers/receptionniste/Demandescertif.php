@@ -11,8 +11,38 @@ class Demandescertif extends Controller
 {
     public function index()
     {
-        $cert = demandescer::all();
-        return view('receptionniste.listecrdemanderec' ,compact('cert'));
+        $cert = demandescer:: where('status', '=' , 'En cours')->get();
+        $rejet = demandescer:: where('status', '=' , 'Rejetter')->get();
+
+        return view('receptionniste.listecrdemanderec' ,compact('cert','rejet'));
+    }
+
+    
+    public function edit($id)
+    {
+        $abai = demandescer::findOrfail($id);
+        return view('receptionniste.modifcert',compact('abai'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        $abai = $request->validate([
+
+ 
+            'motifrejet'=>'required'
+
+        ]);
+
+        if($abai);
+        {
+            $abai = demandescer::whereId($id)->update([
+            'status'=>'Rejetter',
+            'motifrejet'=>$request['motifrejet'],
+            ]);
+        }
+        
+        return redirect('demandecrrecp');
+
     }
 
     public function store(Request $request)

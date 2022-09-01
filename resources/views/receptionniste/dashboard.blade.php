@@ -6,15 +6,13 @@
     
     <div class="page-body">
         <div class="row">
-                  
-                    <h2>Receptionniste</h2>
                                             <!-- order-card start -->
                                             <div class="col-md-6 col-xl-3">
                                                 <div class="card bg-c-blue order-card" onclick="location.href='{{ url('demandecirecp') }}';" style="cursor: pointer">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20">Cartes d'identités</h6>
-                                                        <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span></span></h2>
-                                                        <p class="m-b-0">Cette semaine<span class="f-right">351</span></p>
+                                                        <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>50</span></h2>
+                                                        <p class="m-b-0">Cette semaine<span class="f-right">10</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -22,8 +20,8 @@
                                                 <div class="card bg-c-green order-card" onclick="location.href='{{ url('demandecrecp') }}';" style="cursor: pointer">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20">Certificats Residences</h6>
-                                                        <h2 class="text-right"><i class="ti-tag f-left"></i><span></span></h2>
-                                                        <p class="m-b-0">Cette semaine<span class="f-right">213</span></p>
+                                                        <h2 class="text-right"><i class="ti-tag f-left"></i><span>25</span></h2>
+                                                        <p class="m-b-0">Cette semaine<span class="f-right">213</span>10</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -31,8 +29,8 @@
                                                 <div class="card bg-c-yellow order-card">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20"> Retraits</h6>
-                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>18562</span></h2>
-                                                        <p class="m-b-0">Ce mois<span class="f-right">1032</span></p>
+                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>10</span></h2>
+                                                        <p class="m-b-0">Ce mois<span class="f-right">1032</span>5</p>
                                                     </div>
                                                 </div>
                                             </div>

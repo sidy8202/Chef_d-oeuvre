@@ -55,10 +55,10 @@
     <!-- Pre-loader end -->
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
-        <div class="pcoded-container navbar-wrapper">
+        <div class="pcoded-container navbar-wrapper" >
 
-            <nav class="navbar header-navbar pcoded-header" ">
-               <div class="navbar-wrapper">
+            <nav class="navbar header-navbar pcoded-header" >
+               <div class="navbar-wrapper" >
                    <div class="navbar-logo">
                        <a class="mobile-menu" id="mobile-collapse" href="#!">
                            <i class="ti-menu"></i>
@@ -191,7 +191,7 @@
 
                     <nav class="pcoded-navbar">
                         <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
-                        <div class="pcoded-inner-navbar main-menu">
+                        <div class="pcoded-inner-navbar main-menu" >
                             
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Deconnexion</div>
                             <ul class="pcoded-item pcoded-left-item">
