@@ -22,7 +22,7 @@
   
                 <form action="" id="rejetForm" enctype="multipart/form-data" method="POST">
                   @csrf
-                  @method('PATCH')
+            
 
                   <input type="" value="" id="id" name="id"/> 
 
@@ -64,9 +64,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <marquee behavior="" direction="">
-          <h6 class="text-danger">Veuillez fournir une copie de piece ou un extrait!</h6>
-      </marquee>  
+        <h6>Veuillez fournir une copie de piece ou un extrait!</h6>
 
               <form action="" enctype="multipart/form-data" method="">
                 @csrf
@@ -129,7 +127,7 @@
         <div class="modal-body">
           <h6>Veuillez fournir une copie de piece ou un extrait!</h6>
   
-                <form action="{{ route('carte.create') }}" enctype="multipart/form-data" method="POST">
+                <form action="" enctype="multipart/form-data" method="POST">
                   @csrf
   
                   {{-- <div class="form-outline mb-4">
@@ -176,22 +174,24 @@
                   
       </div>
     </div>
-  </div>
+ </div>
 
 {{-- Fin --}}
 
 {{-- Modal confirmation de Rendez vous --}}
 
-<div class="modal fade" id="confModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="retraitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Fixer un Rendez vous avec le citoyen</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Formulaire de Retrait de carte</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body"> 
-                <form action="{{ route('confirmdemandeci') }}" enctype="multipart/form-data" method="POST">
+                <form action="" enctype="multipart/form-data" method="POST">
                   @csrf
+                  @method('PATCH')
+
                   {{-- <input type="" id="id" name="id_demandescer"> --}}
                   <input type="" value="" id="iduse" name="id_demandesci"/> 
 
@@ -201,12 +201,16 @@
                     <input type="text" id="form3Example1q" class="form-control" name="type">
                   </div> --}}
                   <div class="form-outline mb-4">
-                      <label class="form-label" for="form3Example1q">Date du Rendez vous </label>
+                      <label class="form-label" for="form3Example1q">Date de Retrait </label>
                       <input type="datetime-local" id="form3Example1q" class="form-control" name="daterdv">
                   </div>
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example1q">Message </label>
-                    <textarea name="commentaires" id="form3Example1q" class="form-control" cols="30" rows="3"></textarea>
+                    <label class="form-label" for="form3Example1q">Numero du document</label>
+                    <input type="text" id="form3Example1q" class="form-control" name="numero_document">
+                </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q">Montant</label>
+                    <input type="number" id="form3Example1q" class="form-control" name="prix">
                 </div>
                   
                   
@@ -267,22 +271,22 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs md-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>La liste des demandes</a>
+                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>La liste des Rendez Vous</a>
                     <div class="slide"></div>
                 </li>
                 
                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#profile3" role="tab"><i class="fa fa-key"></i>Demandes Validées</a>
+                    <a class="nav-link" data-toggle="tab" href="profile3" role="tab"><i class="fa fa-key"></i>Documents Retirés</a>
                     <div class="slide"></div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#messages3" role="tab"><i class="fa fa-play-circle"></i>Demandes Rejetées</a>
+                {{-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-play-circle"></i></a>
                     <div class="slide"></div>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link text-white " data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:blue" data-toggle="tab" href="#" role="tab"><i class="fa fa-database"></i>Nouvelle Demande</a>
+                    <a class="nav-link text-white " data-toggle="tab" href="#" role="tab"><i class="fa fa-database"></i></a>
                     <div class="slide"></div>
-                </li> 
+                </li>  --}}
             </ul>
             <!-- Tab panes -->
             <div class="tab-content card-block">
@@ -290,33 +294,35 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered" id="datatable" >
+                           
                             <tr>
                                 <th>No Demande</th>
                                 <th>Date Demande</th>
+                                <th>Date Rendez vous</th>
                                 <th>Demandeur</th>
-                                <th>Status</th>
+                                {{-- <th>Status</th> --}}
                                 <th>Document envoyé</th>
                                 <th>Actions</th>                               
                             </tr>
 
-                            @foreach ($niyira as $cissan )    
-
+                              
+                            @foreach($rdv as $prendre)
                             <tr>
-                                <td>{{ $cissan->id }}</td>
-                                <td>{{ $cissan->created_at }}</td>
-                                <td>{{ $cissan->user->nom }}  {{ $cissan->user->prenom }}</td>
-                                <td>{{ $cissan->status }}</td>
-                                <td><a href="{{ url('carte/d_identite/'.$cissan->document) }}" download>Fichier(Telecharger)</a></td>                                             
+                                <td>{{ $prendre->id }}</td>
+                                <td></td>
+                                <td>{{ $prendre->daterdv }}</td>
+                                <td></td>
+                                {{-- <td></td> --}}
+
+                                <td><a href="" download>Fichier(Telecharger)</a></td>                                             
                                 <td>
-                                    <a href="{{ url('carte/d_identite/'.$cissan->document) }}" view class=""><i class="ti-eye"></i></a>
                                     {{-- <a href="#" class="btn btn-sm btn-success label" data-id="{{ $cissan->id }}" id="conf">val</button> --}}
-                                    {{-- <a href="#" class="" data-id="{{ $cissan->id }}" id="confir"><i class="ti-check"></i></button> --}}
-                                    <a href="{{ route('confirmerdossier', $cissan->id) }}" class="none" id="confirm"><i class="ti-check"></i></button>                                          
-                                    <a href="{{ route('carterejeter', $cissan->id) }}" class="none" id="rej"><i class="ti-trash"></i></button>                                                                                                                          
+                                    <a href="{{ route('documentminai', $prendre->id) }}" class="none" id="rej"><i class="ti-check"></i></button>
+                                                                                
                                 </td>                                
                             </tr>
 
-                            @endforeach
+                        @endforeach
                         </table>
                     </div>
                     {{-- <div class="text-center">
@@ -328,32 +334,29 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                              <th>No Demande</th>
-                              <th>Date Demande</th>
-                              <th>Demandeur</th>
-                              <th>Status</th>
-                              <th>Document envoyé</th>
-                              <th>Actions</th>         
+                                <th>Image</th>
+                                <th>Product Code</th>
+                                <th>Customer</th>
+                                <th>Purchased On</th>
+                                <th>Status</th>
+                                <th>Transaction ID</th>
                             </tr>
-                            @foreach($gnouman as $valider)
                             <tr>
-                                {{-- <td><img src="assets/images/product/prod1.jpg" alt="prod img" class="img-fluid"></td> --}}
-                                <td>{{ $valider->id }}</td>
-                                <td>{{ $valider->created_at }}</td>
-                                <td>{{ $valider->user->nom }}  {{ $valider->user->prenom }}</td>
-                                <td>{{ $valider->status }}</td>
-                                <td></td>
-                                <td>
-                                  <a href="{{ url('carte/d_identite/'.$valider->document) }}" view class=""><i class="ti-eye"></i></a>
-                                  {{-- <a href="#" class="btn btn-sm btn-success label" data-id="{{ $valider->id }}" id="conf">val</button> --}}
-                                  <a href="#" class="" data-id="{{ $valider->id }}" id="confir"><i class="ti-check"></i></button>
-                                  {{-- <a href="{{ route('confirmerdossier', $valider->id) }}" class="none" id="confirm"><i class="ti-check"></i></button>                                           --}}
-                                  <a href="{{ route('carterejeter', $valider->id) }}" class="none" id="rej"><i class="ti-trash"></i></button> 
-                                </td>
-                                
+                                <td><img src="assets/images/product/prod3.jpg" alt="prod img" class="img-fluid"></td>
+                                <td>PNG002653</td>
+                                <td>Eugine Turner</td>
+                                <td>04-01-2017</td>
+                                <td><span class="label label-success">Delivered</span></td>
+                                <td>#7234417</td>
                             </tr>
-                           @endforeach
-
+                            <tr>
+                                <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
+                                <td>PNG002156</td>
+                                <td>Jacqueline Howell</td>
+                                <td>03-01-2017</td>
+                                <td><span class="label label-warning">Pending</span></td>
+                                <td>#7234454</td>
+                            </tr>
                         </table>
                     </div>
                     <div class="text-center">
@@ -365,25 +368,29 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                              <th>No Demande</th>
-                              <th>Date Demande</th>
-                              <th>Demandeur</th>
-                              <th>Status</th>
-                              <th>Document envoyé</th>
-                                     
+                                <th>Image</th>
+                                <th>Product Code</th>
+                                <th>Customer</th>
+                                <th>Purchased On</th>
+                                <th>Status</th>
+                                <th>Transaction ID</th>
                             </tr>
-
-                            @foreach($kolon as $valider)
                             <tr>
-                                {{-- <td><img src="assets/images/product/prod1.jpg" alt="prod img" class="img-fluid"></td> --}}
-                                <td>{{ $valider->id }}</td>
-                                <td>{{ $valider->created_at }}</td>
-                                <td>{{ $valider->user->nom }}  {{ $valider->user->prenom }}</td>
-                                <td>{{ $valider->status }}</td>
+                                <td><img src="assets/images/product/prod1.jpg" alt="prod img" class="img-fluid"></td>
+                                <td>PNG002413</td>
+                                <td>Jane Elliott</td>
+                                <td>06-01-2017</td>
                                 <td><span class="label label-primary">Shipping</span></td>
-                                
+                                <td>#7234421</td>
                             </tr>
-                           @endforeach
+                            <tr>
+                                <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
+                                <td>PNG002156</td>
+                                <td>Jacqueline Howell</td>
+                                <td>03-01-2017</td>
+                                <td><span class="label label-warning">Pending</span></td>
+                                <td>#7234454</td>
+                            </tr>
                         </table>
                     </div>
                     <div class="text-center">
@@ -429,7 +436,7 @@
     </div>
 </div>
 <!-- tabs card end -->
-{{-- +223 70 77 07 48 --}}
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
@@ -444,14 +451,13 @@
 
 
 <script>
-  $(document).on('click','#confir', function (){ 
+  $(document).on('click','#retrait', function (){ 
 
-  var id = $(this).attr('data-id')
-  $('#iduse').val(id);
+var id = $(this).attr('data-id')
+$('#iduse').val(id);
 
-  $('#confModal').modal('show');
+$('#retraitModal').modal('show');
 });
-
 </script>
 
 
@@ -463,7 +469,7 @@
 var id = $(this).attr('data-id')
 $('#id').val(id);
 
-$('#rejetModal').modal('show');
+$('#retraitModal').modal('show');
 });
 </script>
 

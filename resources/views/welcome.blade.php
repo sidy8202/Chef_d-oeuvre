@@ -141,19 +141,28 @@
         </div>
 
         <div class="modal-body">
-            <form action="{{ URL('admin/citoyenadd') }}" class="px-md-2" method="POST">
+            <form action="{{ URL('admin/citoyenadd') }}" class="px-md-2" enctype="multipart/form-data" method="POST">
               @csrf
                   {{-- Try --}}                      
 
-                <div class="form-outline mb-4">
-                  <label class="form-label fw-bold" for="form3Example1q">Nom</label>
-                  <input type="text" id="form3Example1q" placeholder="Votre Nom à l'etat Civil" class="form-control" name="nom"/>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <label class="form-label fw-bold" for="form3Example1q">Prenom</label>
-                  <input type="text" id="form3Example1q" placeholder="Votre Prenom à l'etat Civil" class="form-control" name="prenom"/>
-                </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label fw-bold" for="form3Example1q">Photo de Profil</label>
+                    <input type="file" id="form3Example1q" placeholder="Votre photo de profil" class="form-control" name="profile_img"/>
+                  </div>
+  
+                  <div class="row">
+                      <div class="col mb-4">
+                        <div class="form-outline datepicker">
+                          <label for="exampleDatepicker1" class="form-label">Nom</label>
+                          <input type="text" placeholder="Votre nom à l'etat Civil" class="form-control" id="exampleDatepicker1" name="nom"/>
+                        </div>
+    
+                      </div>
+                      <div class="col-md mb-4">
+                        <label for="exampleDatepicker1" class="form-label">Prenom</label>
+                        <input type="text" class="form-control" placeholder="Votre prenom à l'etat Civil" id="exampleDatepicker1" name="prenom"/>
+                      </div>
+                  </div>
 
                 <div class="row">
                   <div class="col mb-4">

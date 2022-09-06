@@ -46,22 +46,34 @@
                     @endif
                 
                     <marquee behavior="" direction="">
-                        <h6 class="text-danger">Veuillez s'il vous plait  mentionner le motif du rejet!!</h6>
+                        <h6 class="text-danger">Si vous validé  certificat de residence la demande veuillez s'il vous changer le status en Valider et mentionnez le motif du rejet</h6>
                     </marquee>  
                     
 
-                    <form action="{{ route('cartedidentiterejet', $cissan->id) }}" class="px-md-2" method="POST">
+                    <form action="" class="px-md-2" method="POST">
                         @csrf
                         @method('PATCH')
                             {{-- Try --}}                      
-                  
                             <div class="row">
-                             
-                              
-                            </div>
-                          <div class="form-outline mb-4">
-                            <label class="form-label fw-bold" for="form3Example1q">Motif du Rejet</label>
-                            <textarea name="motifrejet" class="form-control" id="" cols="30" rows="5"></textarea>
+                                <div class="col mb-4">
+                                  <div class="form-outline datepicker">
+                                    <label for="exampleDatepicker1" class="form-label">Numero de la demande</label>
+                                    <input type="text" class="form-control" id="exampleDatepicker1" name="adresse" readonly value="{{ $cissan->id }}"/>
+                                  </div>
+              
+                                </div>
+                                <div class="col-md mb-4">
+                                  <label for="exampleDatepicker1" class="form-label">Date de la demande</label>
+                                  <input type="text" class="form-control" id="exampleDatepicker1" name="phone" readonly value="{{ $cissan->created_at }}"/>
+                                </div>
+                            </div>  
+                            <div class="form-outline mb-4">
+                            <label class="form-label fw-bold" for="form3Example1q">Status</label>
+                            <select name="status" id="" class="form-control" id="exampleDatepicker1">
+                                <option value="">Changer en Valider</option>
+                                <option value="Valider">Valider</option>
+
+                            </select>
                           </div>
                           
                           <div class="modal-footer">  

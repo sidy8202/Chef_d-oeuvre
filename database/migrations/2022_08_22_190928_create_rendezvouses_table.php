@@ -17,7 +17,12 @@ class CreateRendezvousesTable extends Migration
             $table->id();
             $table->string('commentaires');
             $table->date_time_set('daterdv')->nullable();
-            
+            $table->date_time_set('date_retrait')->nullable();
+
+            $table->string('etat')->nullable();
+            $table->string('numero_document')->nullable();
+            $table->integer('prix')->nullable();
+      
             $table->unsignedBigInteger("id_demandesci")->nullable();
             $table->foreign('id_demandesci')
                 ->references('id')
@@ -29,6 +34,12 @@ class CreateRendezvousesTable extends Migration
                     ->references('id')
                     ->on('demandescers')
                     ->onDelete('cascade');
+
+                    $table->unsignedBigInteger("id_users");
+                    $table->foreign('id_users')
+                        ->references('id')
+                        ->on('users')
+                        ->onDelete('cascade');
             $table->timestamps();
         });
     }

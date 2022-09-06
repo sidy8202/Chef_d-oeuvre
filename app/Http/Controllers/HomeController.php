@@ -40,8 +40,10 @@ class HomeController extends Controller
 
             elseif($user->status == 'receptionniste')
             {
+
+                $niyira = demandesci:: where('status', '=' , 'En cours')->get();
                 $receptionniste = receptionnistes::where ('id_users', $user->id)->first();
-                return view ('receptionniste.dashboard',compact('receptionniste'));
+                return view ('receptionniste.dashboard',compact('receptionniste','niyira'));
             }
 
             elseif($user->status == 'citoyen')

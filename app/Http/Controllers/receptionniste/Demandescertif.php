@@ -12,9 +12,10 @@ class Demandescertif extends Controller
     public function index()
     {
         $cert = demandescer:: where('status', '=' , 'En cours')->get();
+        $gnouman = demandescer:: where('status', '=' , 'Valider')->get();
         $rejet = demandescer:: where('status', '=' , 'Rejetter')->get();
 
-        return view('receptionniste.listecrdemanderec' ,compact('cert','rejet'));
+        return view('receptionniste.listecrdemanderec' ,compact('cert','rejet','gnouman'));
     }
 
     

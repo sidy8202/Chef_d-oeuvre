@@ -15,4 +15,16 @@ class rendezvous extends Model
         'id_demandesci',
         'id_demandescer',
     ];
+
+    public function demandesci()
+    {
+        return $this->hasMany(demandesci::class,'id_demandesci');
+
+    }
+
+    public function demandescer()
+    {
+        return $this->hasMany(demandescer::class,'id_demandescer');
+
+    }
 }

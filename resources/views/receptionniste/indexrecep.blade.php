@@ -15,8 +15,10 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="description" content="Gradient Able Bootstrap admin template made using Bootstrap 4. The starter version of Gradient Able is completely free for personal project." />
       <meta name="keywords" content="free dashboard template, free admin, free bootstrap template, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+
       <meta name="author" content="codedthemes">
       {{-- yes --}}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
       <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
       <!-- Favicon icon -->
@@ -207,7 +209,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="{{ url('demandecirecp') }}">
+                                            <a href="{{ route('carteciaffichage') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Carte d'identité</span>
                                                 <span class="pcoded-mcaret"></span>
@@ -240,7 +242,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="{{ url('listecidemande') }}">
+                                            <a href="{{ route('voirlisterdv') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Rendez Vous</span>
                                                 <span class="pcoded-mcaret"></span>
@@ -339,7 +341,7 @@
                                     <ul class="pcoded-submenu">
                                        
                                         <li class=" ">
-                                            <a href="sample-page.html">
+                                            <a href="{{ route('voirtouslescitoyens') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Citoyens</span>
                                                 <span class="pcoded-mcaret"></span>

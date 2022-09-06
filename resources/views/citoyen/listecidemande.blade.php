@@ -21,16 +21,8 @@
                 @csrf
 
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example1q">Taille</label>
-                    <input type="text" id="form3Example1q" class="form-control" name="taille">
-                </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example1q">Teint</label>
-                    <input type="text" id="form3Example1q" class="form-control" name="teint">
-                </div>
-                <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example1q">Objet</label>
-                  <textarea id="form3Example1q" class="form-control" name="objet" cols="60" rows="5"></textarea>
+                  <textarea id="form3Example1q" class="form-control" name="objet" cols="30" rows="3"></textarea>
                 </div>
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example1q">Anncienne piece ou extrait</label>

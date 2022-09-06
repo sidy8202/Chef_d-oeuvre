@@ -10,15 +10,65 @@ use Illuminate\Support\Facades\Auth;
 class cartedidentiteController extends Controller
 {
     //
-    public function index(){
-
-        $abeyira = demandesci::all();
-        return view('receptionniste.listecidemanderec',compact('abeyiara'));
+    public function index()
+    {        
+        $niyira = demandesci:: where('status', '=' , 'En cours')->get();
+        $gnouman = demandesci:: where('status', '=' , 'Valider')->get();
+        $kolon = demandesci:: where('status', '=' , 'Rejetter')->get();
+        return view('receptionniste.listecidemanderec',compact('niyira','gnouman','kolon'));
     }
 
-    public function rejeter()
+        // COnfirmer
+
+    public function modif($id)
     {
-        return view('receptionniste.rejetcartedidentite');
+        $cissan = demandesci::findOrfail($id);
+        return view('receptionniste.confirmationcartedidentite',compact('cissan'));
+    }
+
+    public function updateci(Request $request, $id)
+    {
+        $cissan = $request->validate([
+
+            'status'=>'required'
+
+        ]);
+
+        if($cissan);
+        {
+            $abai = demandesci::whereId($id)->update([
+            'status'=>'Valider',
+            
+            ]);
+        }
+        
+        return redirect('demandeciview')->with('success', 'Demande rejetée avec succèss!!!');
+    }
+
+    public function edit($id)
+    {
+        $cissan = demandesci::findOrfail($id);
+        return view('receptionniste.rejetercartedidentite',compact('cissan'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        $cissan = $request->validate([
+
+            'motifrejet'=>'required'
+
+        ]);
+
+        if($cissan);
+        {
+            $abai = demandesci::whereId($id)->update([
+            'status'=>'Rejetter',
+            'motifrejet'=>$request['motifrejet'],
+            ]);
+        }
+        
+        return redirect('demandeciview')->with('success', 'Demande rejetée avec succèss!!!');
+
     }
 
     
@@ -47,12 +97,11 @@ class cartedidentiteController extends Controller
                     'type' => 'carte d_identite',
                     'status' => 'En cours',
                     'objet'=>$request['objet'],
-                    'id_users'=>$user->id,
-                    
+                    'id_users'=>$user->id,                   
                 ]
             );
         }
    
-        return redirect('/demandecirecp')->with('success', 'Votre demande a eté envoyée avec succèss!!!');
+        return redirect('/demandeciview')->with('success', 'Votre demande a eté envoyée avec succèss!!!');
     }
 }

@@ -6,7 +6,7 @@
     <div class="card tabs-card">
         <div class="card-block p-0">
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs md-tabs" role="tablist">
+            {{-- <ul class="nav nav-tabs md-tabs" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>La liste des demandes</a>
                     <div class="slide"></div>
@@ -24,7 +24,7 @@
                     <a class="nav-link text-white" style="background-color:blue" data-toggle="tab" href="#" role="tab"data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa fa-database"></i>Nouvelle Demande</a>
                     <div class="slide"></div>
                 </li>
-            </ul>
+            </ul> --}}
             <!-- Tab panes -->
             <div class="tab-content card-block">
                 <div class="tab-pane active" id="home3" role="tabpanel">
@@ -55,33 +55,9 @@
                         @method('PATCH')
                             {{-- Try --}}                      
                   
-                            <div class="row">
-                              <div class="col mb-4">
-                                <div class="form-outline datepicker">
-                                  <label for="exampleDatepicker1" class="form-label fw-bold">Status</label>
-                                  <select name="status" id="" class="form-control">
-                                    {{-- <option value="">Changer le status en Rejetter</option> --}}
-                                    <option value="">{{ $abai->status }}</option>
-                                    <option value="Rejetter">Rejetter</option>
-                                  </select>
-                                  {{-- <input type="text" value="{{ $abai->status }}" class="form-control" id="exampleDatepicker1" name="status"/> --}}
-                    
-                                  @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                  @enderror
-                                </div>
-                    
-                              </div>
-                              <div class="col-md mb-4">
-                                <label for="exampleDatepicker1" class="form-label fw-bold">Numero</label>
-                                <input type="text" class="form-control" id="exampleDatepicker1" name="username"/>
-                              </div>
-                            </div>
                           <div class="form-outline mb-4">
                             <label class="form-label fw-bold" for="form3Example1q">Motif du Rejet</label>
-                            <textarea name="motifrejet" class="form-control" id="" cols="30" rows="3"></textarea>
+                            <textarea name="motifrejet" class="form-control" id="" cols="30" rows="5"></textarea>
                           </div>
                           
                           <div class="modal-footer">  

@@ -21,9 +21,10 @@ class ReceptionnisteController extends Controller
         return view('receptionniste.dashboard', compact('ayira','nanayé'));
     }
 
-    public function rendezvous()
+    public function listecitoyens()
     {
-
+        $maliens = citoyens::all();
+        return view('receptionniste.listedescitoyens', compact('maliens')); 
     }
 
     public function store(Request $request)

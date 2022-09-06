@@ -211,11 +211,11 @@
                   </li>
                   
                   <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-key"></i>Les demandes rejettées</i></a>
+                      <a class="nav-link" data-toggle="tab" href="#profile3" role="tab"><i class="fa fa-key"></i>Les demandes validées</i></a>
                       <div class="slide"></div>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-play-circle"></i></a>
+                      <a class="nav-link" data-toggle="tab" href="#message3" role="tab"><i class="fa fa-play-circle"></i>Les demandes rejetées</a>
                       <div class="slide"></div>
                   </li>
                   <li class="nav-item">
@@ -232,55 +232,58 @@
                               <tr>
                                   <th>No Demande</th>
                                   <th>Date Demande</th>
-                                  <th>Citoyens</th>
-
+                                  <th>Demandeur</th>
                                   <th>Status</th>
                                   <th>FIchier Envoyé</th>
                                   <th>Actions</th> 
                               </tr>
                                    
-                                @foreach ($cert as $abai )
+                                @foreach ($cert as $cool )
                              
                               <tr>
                                   {{-- <td><img src="assets/images/product/prod2.jpg" alt="prod img" class="img-fluid"></td> --}}
-                                  <td>{{ $abai->id }}</td>
-                                  <td>{{ $abai->created_at }}</td>
-                                  <td>{{ $abai->user->nom }}  {{ $abai->user->prenom }}</td>
+                                  <td>{{ $cool->id }}</td>
+                                  <td>{{ $cool->created_at }}</td>
+                                  <td>{{ $cool->user->nom }}  {{ $cool->user->prenom }}</td>
 
-                                  <td>{{ $abai->status }}</td>
-                                  <td><a href="{{ url('certi/residencee'.$abai->document) }}" download>Fichier</a></td>
+                                  <td>{{ $cool->status }}</td>
+                                  <td><a href="{{ url('certi/residencee'.$cool->document) }}" download>Fichier</a></td>
                                   <td>
-                                    <a href="{{ url('certi/residencee'.$abai->document) }}"  class="label btn-primary btn-sm" view >Voir</a>
-                                    <a href="#" class="label label-success btn-sm" data-id="{{ $abai->id }}" id="conf">Valider</a>
-                                    <a href="{{ route('certerejet', $abai->id) }}" id="rejet" class="label label-danger rejet btn-sm ">rejetter</a>
+                                    <a href="{{ url('certi/residencee'.$cool->document) }}"  class="label btn-primary btn-sm" view >Voir</a>
+                                    {{-- <a href="#" class="label label-success btn-sm" data-id="{{ $cool->id }}" id="conf">Valider</a> --}}
+                                    <a href="{{ route('certerevalider', $cool->id) }}" class="label label-danger rejet btn-sm ">rejetter</a>
+                                    <a href="{{ route('certerejet', $cool->id) }}" id="rejet" class="label label-danger rejet btn-sm ">rejetter</a>
                                 </td>                                  
                               </tr>
                               @endforeach
                           </table>
                       </div>
-                      <div class="text-center">
+                      {{-- <div class="text-center">
                           <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
-                      </div>
+                      </div> --}}
                   </div>
                   <div class="tab-pane" id="profile3" role="tabpanel">
   
                       <div class="table-responsive">
                           <table class="table">
                               <tr>
-                                  <th>Image</th>
-                                  <th>Product Code</th>
-                                  <th>Customer</th>
-                                  <th>Purchased On</th>
-                                  <th>Status</th>
-                                  <th>Transaction ID</th>
+                                <th>No Demande</th>
+                                <th>Date Demande</th>
+                                <th>Demandeur</th>
+                                <th>Status</th>
+                                <th>FIchier Envoyé</th>
+                                <th>Actions</th> 
                               </tr>
+                              @foreach($gnouman as $propre)
                               <tr>
-                                  <td><img src="assets/images/product/prod3.jpg" alt="prod img" class="img-fluid"></td>
-                                  <td>PNG002653</td>
-                                  <td>Eugine Turner</td>
-                                  <td>04-01-2017</td>
-                                  <td><span class="label label-success">Delivered</span></td>
-                                  <td>#7234417</td>
+                                  <td>{{ $propre->id }}</td>
+                                  <td>{{ $propre->created_at }}</td>
+                                  <td>{{ $propre->user->nom }}  {{ $propre->user->prenom }}</td>
+                                  <td>{{ $propre->status }}</td>
+                                  <td><a href="{{ url('certi/residencee'.$propre->document) }}" download>Fichier</a></td>
+                                  <td>
+                                    <a href="#" class="label label-success btn-sm" data-id="{{ $propre->id }}" id="conf">Valider</a>
+                                  </td>
                               </tr>
                               <tr>
                                   <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
@@ -301,28 +304,18 @@
                       <div class="table-responsive">
                           <table class="table">
                               <tr>
-                                  <th>Image</th>
-                                  <th>Product Code</th>
-                                  <th>Customer</th>
-                                  <th>Purchased On</th>
-                                  <th>Status</th>
-                                  <th>Transaction ID</th>
+                                <th>No Demande</th>
+                                <th>Date Demande</th>
+                                <th>Demandeur</th>
+                                <th>Status</th>
+                                <th>FIchier Envoyé</th>
                               </tr>
                               <tr>
-                                  <td><img src="assets/images/product/prod1.jpg" alt="prod img" class="img-fluid"></td>
-                                  <td>PNG002413</td>
-                                  <td>Jane Elliott</td>
-                                  <td>06-01-2017</td>
-                                  <td><span class="label label-primary">Shipping</span></td>
-                                  <td>#7234421</td>
-                              </tr>
-                              <tr>
-                                  <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
-                                  <td>PNG002156</td>
-                                  <td>Jacqueline Howell</td>
-                                  <td>03-01-2017</td>
-                                  <td><span class="label label-warning">Pending</span></td>
-                                  <td>#7234454</td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
                               </tr>
                           </table>
                       </div>

@@ -19,9 +19,15 @@ class demandesci extends Model
             'document'
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class,'id_users');
+
+    }
+
+    public function rendezvous()
+    {
+        return $this->belongsTo(rendezvous::class,'id_demandesci');
 
     }
 }

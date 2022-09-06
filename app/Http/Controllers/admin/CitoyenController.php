@@ -32,6 +32,7 @@ class CitoyenController extends Controller
         $nagnana = $request->validate(
             [
 
+                'profile_img' => 'required|mimes:png,jpg,jpeg|max:1000',
                 'nom'=>['required','string','max:225'],
                 'prenom'=>['required','string','max:225'],                
                 'adresse'=>['required','string','max:225'],
@@ -45,6 +46,7 @@ class CitoyenController extends Controller
 
             if($nagnana)
             {
+                
                 $user =  User::create(
                     [
                         'nom' => $request['nom'],
@@ -58,8 +60,11 @@ class CitoyenController extends Controller
 
                     if($user)
                     {
+                        $fileName = time().'.'.$request->profile_img->extension();  
+                        $request->profile_img->move(public_path('profile/citoyens'), $fileName);
                         $citoyen = citoyens::create(
                             [
+                                'profile_img'=>$fileName,
                                 'id_users' => $user->id,
                                 'nom'=>$request['nom'],
                                 'prenom'=>$request['prenom'],
@@ -71,10 +76,70 @@ class CitoyenController extends Controller
 
                             ]
                             );                          
-                            return view('welcome')->with('success', 'Félicitations très chèr(e) citoyen votre compte a été crée avec success !!');
+                            return redirect('welcome')->with('success', 'Félicitations très chèr(e) citoyen votre compte a été crée avec success !!');
                             
 
                     }
                 }
-     }          
+     }   
+     
+    //  Ajout citoyen cote receptionniste
+
+    public function ajoutcitoyens(Request $request)
+    {
+        $nagnana = $request->validate(
+            [
+
+                'profile_img' => 'required|mimes:png,jpg,jpeg|max:1000',
+                'nom'=>['required','string','max:225'],
+                'prenom'=>['required','string','max:225'],                
+                'adresse'=>['required','string','max:225'],
+                'email'=>['required','string','email','max:50','unique:users'],
+                'username'=>['required','string','max:225'],
+                'phone'=>['required','string','max:50'],                
+                'password'=>['required','string','min:5','confirmed']
+               
+            ]
+            );
+
+            if($nagnana)
+            {
+                
+                $user =  User::create(
+                    [
+                        'nom' => $request['nom'],
+                        'prenom' => $request['prenom'],
+                        'email' =>$request['email'],
+                        'password' => bcrypt($request['password']),
+                        'status' => 'citoyen',
+                    ]
+                    
+                    );
+
+                    if($user)
+                    {
+                        $fileName = time().'.'.$request->profile_img->extension();  
+                        $request->profile_img->move(public_path('profile/citoyens'), $fileName);
+                        $citoyen = citoyens::create(
+                            [
+                                'profile_img'=>$fileName,
+                                'id_users' => $user->id,
+                                'nom'=>$request['nom'],
+                                'prenom'=>$request['prenom'],
+                                'adresse'=>$request['adresse'],
+                                'phone'=>$request['phone'],                                                              
+                                'email'=>$request['email'],
+                                'username'=>$request['username'],
+                                'password' => bcrypt($request['password']),
+
+                            ]
+                            );                          
+                            return redirect('/citoyenslistes')->with('success', 'Compte citoyen crée avec success !!');
+                            
+
+                    }
+                }
+     }        
+
+    // End ajout
 }
