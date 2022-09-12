@@ -10,8 +10,8 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Demande Carte d'identité</h5>
+      <div class="modal-header" style="background-color:#73b4ff">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Demande Carte d'identité</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -45,7 +45,7 @@
                 
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn text-white" style="background-color:#B66639" data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" class="btn btn-primary">Envoyer</button>
                   </div>
 
@@ -88,15 +88,15 @@
                 </li>
                 
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-key"></i></a>
+                        <a class="nav-link" data-toggle="tab" href="#profile3" role="tab"><i class="fa fa-key"></i>Les demandes validées</a>
                         <div class="slide"></div>
                     </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-play-circle"></i></a>
+                    <a class="nav-link" data-toggle="tab" href="#messages3" role="tab"><i class="fa fa-play-circle">Les demandes rejetées</i></a>
                     <div class="slide"></div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" style="background-color:blue" data-toggle="tab" href="#" role="tab" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-database"></i>Nouvelle Demande</a>
+                    <a class="nav-link text-white" style="background-color:#0972a1" data-toggle="tab" href="#" role="tab" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-database"></i>Nouvelle Demande</a>
                     <div class="slide"></div>
                 </li>
             </ul>
@@ -108,6 +108,7 @@
                         <table class="table table-bordered">
                             <h5>{{$ayira->count()}}</h5>
                             <tr>
+                                {{-- <th>#Id</th> --}}
                                 <th>No Demande</th>
                                 <th>Date Demande</th>
                                 <th>Status</th>
@@ -121,7 +122,8 @@
                             @foreach ($ayira as $cissan )
                                  
                             <tr>
-                                <td>{{ $cissan->id }}</td>
+                                <td>CI0{{ $cissan->id }}</td>
+                                {{-- <td>CI2022</td> --}}
                                 <td>{{ ($cissan->created_at) }}</td>
                                 <td>{{ ($cissan->status) }}</td>
 
@@ -129,8 +131,9 @@
                                 <td><a href="{{ url('carte/d_identite/'.$cissan->document) }}" download>Fichier</a></td>
                                              
                                 <td>
-                                    <a href="{{ url('carte/d_identite/'.$cissan->document) }}" view class="btn btn-sm label btn-primary">Voir</a>
-                                
+                                    {{-- <a href="{{ url('carte/d_identite/'.$cissan->document) }}" view class="btn btn-sm label btn-primary">Voir</a> --}}
+                                    <a href="{{ url('carte/d_identite/'.$cissan->document) }}" view class="" title="Afficher" data-toggle="tooltip"><i class="ti-eye"></i></a>&nbsp;&nbsp;&nbsp;
+                                    
                                                                
                                 </td>
                                 
@@ -148,68 +151,61 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th>Image</th>
-                                <th>Product Code</th>
-                                <th>Customer</th>
-                                <th>Purchased On</th>
+                                <th>No Demande</th>
+                                <th>Date Demande</th>
                                 <th>Status</th>
-                                <th>Transaction ID</th>
+                                <th>Document envoyé</th>
+                                <th>Actions</th>
                             </tr>
+                                @foreach($demandeval as $valider)
                             <tr>
-                                <td><img src="assets/images/product/prod3.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002653</td>
-                                <td>Eugine Turner</td>
-                                <td>04-01-2017</td>
-                                <td><span class="label label-success">Delivered</span></td>
-                                <td>#7234417</td>
+                                <td>CR0{{ $valider->id }}</td>
+                                <td>{{ $valider->created_at }}</td>
+                                <td>{{ $valider->status }}</td>
+                                <td><a href="{{ url('carte/d_identite/'.$valider->document) }}" download>Fichier</a></td>
+                                
+                                <td>
+                                    <a href="{{ url('carte/d_identite/'.$valider->document) }}" view class="" title="Afficher" data-toggle="tooltip"><i class="ti-eye"></i></a>&nbsp;&nbsp;&nbsp;
+
+                                </td>
+                               
                             </tr>
-                            <tr>
-                                <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002156</td>
-                                <td>Jacqueline Howell</td>
-                                <td>03-01-2017</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>#7234454</td>
-                            </tr>
+                           @endforeach
                         </table>
                     </div>
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="tab-pane" id="messages3" role="tabpanel">
 
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th>Image</th>
-                                <th>Product Code</th>
-                                <th>Customer</th>
-                                <th>Purchased On</th>
+                                <th>No Demande</th>
+                                <th>Date Demande</th>
                                 <th>Status</th>
-                                <th>Transaction ID</th>
+                                <th>Motif du rejet</th>
+                                <th>Document envoyé</th>
+                                <th>Actions</th>
                             </tr>
+                                @foreach($demanderej as $rejet)
                             <tr>
-                                <td><img src="assets/images/product/prod1.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002413</td>
-                                <td>Jane Elliott</td>
-                                <td>06-01-2017</td>
-                                <td><span class="label label-primary">Shipping</span></td>
-                                <td>#7234421</td>
+                                <td>CI0{{ $rejet->id }}</td>
+                                <td>{{ $rejet->created_at }}</td>
+                                <td>{{ $rejet->status }}</td>
+                                <td>{{ $rejet->motifrejet }}</td>
+                                <td><a href="{{ url('carte/d_identite/'.$rejet->document) }}" download>Fichier</a></td>
+                                <td>
+                                    <a href="{{ url('carte/d_identite/'.$rejet->document) }}" view target="_blank" class="" title="Afficher" data-toggle="tooltip"><i class="ti-eye"></i></a>&nbsp;&nbsp;&nbsp;
+                                </td>                    
                             </tr>
-                            <tr>
-                                <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002156</td>
-                                <td>Jacqueline Howell</td>
-                                <td>03-01-2017</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>#7234454</td>
-                            </tr>
+                                @endforeach
                         </table>
                     </div>
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="tab-pane" id="settings3" role="tabpanel">
 

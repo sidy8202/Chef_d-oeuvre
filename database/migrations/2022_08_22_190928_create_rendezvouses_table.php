@@ -16,8 +16,10 @@ class CreateRendezvousesTable extends Migration
         Schema::create('rendezvouses', function (Blueprint $table) {
             $table->id();
             $table->string('commentaires');
-            $table->date_time_set('daterdv')->nullable();
-            $table->date_time_set('date_retrait')->nullable();
+            $table->string('typedocument');
+
+            $table->date('daterdv')->nullable();
+            $table->date('date_retrait')->nullable();
 
             $table->string('etat')->nullable();
             $table->string('numero_document')->nullable();

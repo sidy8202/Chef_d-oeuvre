@@ -159,7 +159,7 @@
                                        </a>
                                    </li>
                                    <li>
-                                       <a href="user-profile.html">
+                                       <a href="{{ route('modifierprofil') }}">
                                            <i class="ti-user"></i> Profil
                                        </a>
                                    </li>
@@ -193,7 +193,7 @@
                         <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                         <div class="pcoded-inner-navbar main-menu" >
                             
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Deconnexion</div>
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Un Mali innovant</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active">
                                     <a href="{{ route('citoikadash') }}">
@@ -242,23 +242,23 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="">
+                                            <a href="{{ route('rdvducitoyen') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Rendez Vous</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
-                                        <li class=" ">
+                                        {{-- <li class=" ">
                                             <a href="">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Retraits</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Historique &amp; Utilisateurs</div>
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Historique des demandes</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 {{-- <li>
                                     <a href="form-elements-component.html">
@@ -276,7 +276,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="accordion.html">
+                                            <a href="">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Toutes les demandes</span>
                                                 <span class="pcoded-mcaret"></span>

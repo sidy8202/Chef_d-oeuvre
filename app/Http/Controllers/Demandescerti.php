@@ -12,11 +12,10 @@ class Demandescerti extends Controller
     public function index()
     {
         $user = Auth::user();
-        // $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
-        
-        // return view('citoyen.listecidemande',compact('user','ayira'));
         $nanaye = demandescer::where('id_users',$user->id)->orderBy('id','desc')->get();
-        return view('citoyen.listecrdemandes', compact('user','nanaye'));
+        $demandeval= demandescer::where('status', '=', 'Valider')->get();
+        $demanderej= demandescer::where('status', '=', 'Rejeter')->get();
+        return view('citoyen.listecrdemandes', compact('user','nanaye','demandeval','demanderej'));
     }
 
 
@@ -48,6 +47,6 @@ class Demandescerti extends Controller
                 ]
             );
         }
-       return redirect('citoyen.listecrdemandes')->with('success', 'Demande envoyée avec succès!!!!');
+       return redirect('citoyen.listecrdemandes')->with('success', 'Demande envoyée avec succès!');
     }
 }

@@ -39,7 +39,7 @@ class adminController extends Controller
     {
         $nagnana = $request->validate(
             [
-
+                'profile_img' => 'required|mimes:png,jpg,jpeg|max:1000',
                 'nom'=>['required','string','max:225'],
                 'prenom'=>['required','string','max:225'],                
                 'adresse'=>['required','string','max:225'],
@@ -66,8 +66,11 @@ class adminController extends Controller
 
                     if($user)
                     {
+                        $fileName = time().'.'.$request->profile_img->extension();  
+                        $request->profile_img->move(public_path('profile/admins'), $fileName);
                         $commissaire = admins::create(
                             [
+                                'profile_img'=>$fileName,
                                 'id_users' => $user->id,
                                 'nom'=>$request['nom'],
                                 'prenom'=>$request['prenom'],
@@ -79,7 +82,7 @@ class adminController extends Controller
 
                             ]
                             );                          
-                            return view('welcome');
+                            return redirect('admiadd');
                             
 
                     }

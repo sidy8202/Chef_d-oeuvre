@@ -29,15 +29,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::prefix('admin')->group(function() { 
-    Route::get('/dashboard', [App\Http\Controllers\Admin\adminController::class,'dashboard']);  
+    Route::get('/dashboard', [App\Http\Controllers\Admin\adminController::class,'dashboard']);
     Route::get('/dashboard', [App\Http\Controllers\Admin\adminController::class,'view']);  
     Route::get('/dashboard',[\App\Http\Controllers\Admin\ReceptionnisteController::class,'dashboard'])->name('recepdash');
     Route::get('/citoyenslistes',[\App\Http\Controllers\Admin\ReceptionnisteController::class,'listecitoyens'])->name('voirtouslescitoyens');
      
 
-    Route::get('/citoyenadd', [App\Http\Controllers\Admin\CitoyenController::class,'index']);        
-    Route::post('/citoyenadd', [App\Http\Controllers\Admin\CitoyenController::class,'store']);
-    Route::post('/citoyenadd', [App\Http\Controllers\Admin\CitoyenController::class,'ajoutcitoyens'])->name('addcitoyeninside');
+    Route::get('/citoyenadd', [App\Http\Controllers\Admin\CitoyenController::class,'index']); 
+    Route::get('/citoyen-profil', [App\Http\Controllers\Admin\CitoyenController::class,'updateprofile'])->name('modifierprofil');       
+    Route::post('/citoyenadd', [App\Http\Controllers\Admin\CitoyenController::class,'store'])->name('ajoutcitoyensstore');
+    Route::post('/citoyenaddinside', [App\Http\Controllers\Admin\CitoyenController::class,'ajoutcitoyens'])->name('addcitoyeninside');
 
 
 });
@@ -79,20 +80,28 @@ Route::prefix('citoyen')->group(function() {
     Route::patch('/demanderejetci/update/{id}', [\App\Http\Controllers\receptionniste\cartedidentiteController::class, 'update'])->name('cartedidentiterejet'); 
     Route::get('/demandereciconfirmation/modifci/{id}', [\App\Http\Controllers\receptionniste\cartedidentiteController::class, 'modif'])->name('confirmerdossier'); 
     Route::patch('/demandereciconfirm/update/{id}', [\App\Http\Controllers\receptionniste\cartedidentiteController::class, 'updateci'])->name('miseajourdossier'); 
+    Route::get('/voirmesdemandesdeci', [\App\Http\Controllers\receptionniste\cartedidentiteController::class, 'mescartesdidentites'])->name('myowndemandesci');
+    Route::post('/sendmesdemandesdeci', [\App\Http\Controllers\receptionniste\cartedidentiteController::class, 'mescartesonly'])->name('onlyrecpdemandeci');
+
+
 
 
     Route::get('/demanderejet/{id}',[\App\Http\Controllers\receptionniste\Demandescertif::class,'edit'])->name('certerejet');
     Route::patch('/demanderejet/update/{id}',[\App\Http\Controllers\receptionniste\Demandescertif::class,'update'])->name('certerejetupd');
-    Route::get('/certeditasrdv/{id}',[\App\Http\Controllers\receptionniste\Demandescertif::class,'validercertif'])->name('certerevalider');
-
+    Route::get('/demandevalider/{id}',[\App\Http\Controllers\receptionniste\Demandescertif::class,'editvalider'])->name('editerforvalider');
+    Route::patch('/demandevalider/update/{id}',[\App\Http\Controllers\receptionniste\Demandescertif::class,'updatevalider'])->name('editforupdatevalider');
     Route::get('/demandecrrecp',[App\Http\Controllers\receptionniste\Demandescertif::class,'index'])->name('listecerdemandes');
     Route::post('/listedemandecarte',[App\Http\Controllers\receptionniste\Demandescertif::class,'store'])->name('demandecerrecpstore'); 
 
     // Route pour les rendez vous cote receootionniste
     Route::get('/voirlisterdv',[App\Http\Controllers\receptionniste\RendezvousController::class,'index'])->name('voirlisterdv');
+    
     Route::post('/confirmdemande',[App\Http\Controllers\receptionniste\RendezvousController::class,'store'])->name('confirmdemandeci');
     Route::post('/confirmdemandecr',[App\Http\Controllers\receptionniste\RendezvousController::class,'confcr'])->name('confirmdemandecr');
     Route::get('/voirretrait/edit/{id}',[App\Http\Controllers\receptionniste\RendezvousController::class,'editretrait'])->name('documentminai');
+    Route::patch('/ciretrait/update/{id}',[App\Http\Controllers\receptionniste\RendezvousController::class,'updateciretrait'])->name('retraicartedientite');
+    Route::get('/voirrdvdevcitoyen',[App\Http\Controllers\receptionniste\RendezvousController::class,'rendezvouscitoyen'])->name('rdvducitoyen');
+
 
 
 
@@ -111,7 +120,7 @@ Route::prefix('citoyen')->group(function() {
     // End //
 
 
-Route::get('/addrecept',[App\Http\Controllers\Receptionnistekoura::class,'index']);
+Route::get('/addrecept',[App\Http\Controllers\Receptionnistekoura::class,'index'])->name('ajouterreceptionniste');
 Route::post('/addrecept',[App\Http\Controllers\Receptionnistekoura::class,'store']);
 
 

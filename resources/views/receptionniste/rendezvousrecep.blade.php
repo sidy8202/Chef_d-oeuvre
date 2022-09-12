@@ -271,22 +271,24 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs md-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>La liste des Rendez Vous</a>
+                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>Carte d'identité</a>
                     <div class="slide"></div>
                 </li>
+                              
+                <li class="nav-item">
+                   <a class="nav-link" data-toggle="tab" href="#profile3" role="tab"><i class="fa fa-key"></i>Cartes d'identités Retirées</a>
+                   <div class="slide"></div>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-play-circle"></i>Certificat de residence</a>
+                  <div class="slide"></div>
+                </li> 
                 
-                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="profile3" role="tab"><i class="fa fa-key"></i>Documents Retirés</a>
+                <li class="nav-item">
+                  <a class="nav-link text-white " data-toggle="tab" href="#" role="tab"><i class="fa fa-database"></i>Certificats retirés</a>
                     <div class="slide"></div>
-                </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#" role="tab"><i class="fa fa-play-circle"></i></a>
-                    <div class="slide"></div>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link text-white " data-toggle="tab" href="#" role="tab"><i class="fa fa-database"></i></a>
-                    <div class="slide"></div>
-                </li>  --}}
+                </li>  
             </ul>
             <!-- Tab panes -->
             <div class="tab-content card-block">
@@ -300,7 +302,7 @@
                                 <th>Date Demande</th>
                                 <th>Date Rendez vous</th>
                                 <th>Demandeur</th>
-                                {{-- <th>Status</th> --}}
+                                <th>Status</th>
                                 <th>Document envoyé</th>
                                 <th>Actions</th>                               
                             </tr>
@@ -308,16 +310,16 @@
                               
                             @foreach($rdv as $prendre)
                             <tr>
-                                <td>{{ $prendre->id }}</td>
-                                <td></td>
+                                <td>{{ $prendre->id_demandesci }}</td>
                                 <td>{{ $prendre->daterdv }}</td>
                                 <td></td>
-                                {{-- <td></td> --}}
+                                <td>{{ $prendre->demandescer->user->nom}}  {{ $prendre->demandescer->user->prenom}}</td>
+                                <td>{{ $prendre->etat }}</td>
 
                                 <td><a href="" download>Fichier(Telecharger)</a></td>                                             
                                 <td>
                                     {{-- <a href="#" class="btn btn-sm btn-success label" data-id="{{ $cissan->id }}" id="conf">val</button> --}}
-                                    <a href="{{ route('documentminai', $prendre->id) }}" class="none" id="rej"><i class="ti-check"></i></button>
+                                    <a href="{{ route('documentminai', $prendre->id) }}" class="none" id="rej" title="Retrait" data-toggle="tooltip"><i class="ti-check"></i></button>
                                                                                 
                                 </td>                                
                             </tr>
@@ -334,34 +336,26 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th>Image</th>
-                                <th>Product Code</th>
-                                <th>Customer</th>
-                                <th>Purchased On</th>
-                                <th>Status</th>
-                                <th>Transaction ID</th>
+                              <th>No Demande</th>
+                              <th>Date Demande</th>
+                              <th>Date Rendez vous</th>
+                              <th>Demandeur</th>
+                              <th>Status</th>
                             </tr>
+                            @foreach($retrait as $aurevoir)
                             <tr>
-                                <td><img src="assets/images/product/prod3.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002653</td>
-                                <td>Eugine Turner</td>
-                                <td>04-01-2017</td>
-                                <td><span class="label label-success">Delivered</span></td>
-                                <td>#7234417</td>
+                              <td>{{ $aurevoir->id }}</td>
+                              <td></td>
+                              <td>{{ $aurevoir->daterdv }}</td>
+                              <td></td>
+                              <td>{{ $aurevoir->etat }}</td>
                             </tr>
-                            <tr>
-                                <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002156</td>
-                                <td>Jacqueline Howell</td>
-                                <td>03-01-2017</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>#7234454</td>
-                            </tr>
+                              @endforeach
                         </table>
                     </div>
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="tab-pane" id="messages3" role="tabpanel">
 

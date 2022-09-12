@@ -46,11 +46,11 @@
                     @endif
                 
                     <marquee behavior="" direction="">
-                        <h6 class="text-danger">Si vous validé  certificat de residence la demande veuillez s'il vous changer le status en Valider et mentionnez le motif du rejet</h6>
+                        <h6 class="text-danger">Veuillez changer le status de la demande pour qu'elle soit considerer comme validée!!</h6>
                     </marquee>  
                     
 
-                    <form action="" class="px-md-2" method="POST">
+                    <form action="{{ route('editforupdatevalider', $cool->id) }}" class="px-md-2" method="POST">
                         @csrf
                         @method('PATCH')
                             {{-- Try --}}                      
@@ -58,23 +58,27 @@
                                 <div class="col mb-4">
                                   <div class="form-outline datepicker">
                                     <label for="exampleDatepicker1" class="form-label">Numero de la demande</label>
-                                    <input type="text" class="form-control" id="exampleDatepicker1" name="adresse" readonly value="{{ $cissan->id }}"/>
+                                    <input type="text" class="form-control" id="exampleDatepicker1" name="adresse" readonly value="CR0{{ $cool->id }}"/>
                                   </div>
               
                                 </div>
                                 <div class="col-md mb-4">
                                   <label for="exampleDatepicker1" class="form-label">Date de la demande</label>
-                                  <input type="text" class="form-control" id="exampleDatepicker1" name="phone" readonly value="{{ $cissan->created_at }}"/>
+                                  <input type="text" class="form-control" id="exampleDatepicker1" name="phone" readonly value="{{ $cool->created_at }}"/>
                                 </div>
-                            </div>  
+                                
+                            </div> 
                             <div class="form-outline mb-4">
-                            <label class="form-label fw-bold" for="form3Example1q">Status</label>
-                            <select name="status" id="" class="form-control" id="exampleDatepicker1">
-                                <option value="">Changer en Valider</option>
-                                <option value="Valider">Valider</option>
-
-                            </select>
-                          </div>
+                                <label class="form-label fw-bold" for="form3Example1q">Demandeur</label>
+                                <input type="text" class="form-control" id="exampleDatepicker1" name="phone" readonly value="{{ $cool->user->nom }}  {{ $cool->user->prenom }}"/>
+                              </div> 
+                            <div class="form-outline mb-4">
+                                <label class="form-label fw-bold" for="form3Example1q">Status</label>
+                                <select name="status" id="" class="form-control" id="exampleDatepicker1">
+                                    <option value="">Changer en Valider</option>
+                                    <option value="Valider">Valider</option>
+                                </select>
+                            </div>
                           
                           <div class="modal-footer">  
                             <button type="button" class="btn text-white" style="background-color:#B66639" data-bs-dismiss="modal">Annuler</button>

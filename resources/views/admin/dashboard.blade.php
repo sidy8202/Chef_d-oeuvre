@@ -111,8 +111,8 @@
                                            <img class="d-flex align-self-center img-radius" src="{{ asset('assets/dashboard/assets/images/avatar-2.jpg') }}" alt="Generic placeholder image">
                                            <div class="media-body">
                                                <h5 class="notification-user">Diagui Tounkara</h5>
-                                               <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                               <span class="notification-time">30 minutes ago</span>
+                                               <p class="notification-msg">Nouvelle demande de carte di'identité.</p>
+                                               <span class="notification-time">Il y'a 30 minutes </span>
                                            </div>
                                        </div>
                                    </li>
@@ -120,9 +120,9 @@
                                        <div class="media">                              
                                            <img class="d-flex align-self-center img-radius" src="{{ asset('assets/dashboard/assets/images/avatar-4.jpg') }}" alt="Generic placeholder image">
                                            <div class="media-body">
-                                               <h5 class="notification-user">Joseph William</h5>
-                                               <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                               <span class="notification-time">30 minutes ago</span>
+                                               <h5 class="notification-user">Fatoumata Konta</h5>
+                                               <p class="notification-msg">Nouvelle demande de certificat de residence.</p>
+                                               <span class="notification-time">Il y'a 30 minutes ago</span>
                                            </div>
                                        </div>
                                    </li>
@@ -130,9 +130,9 @@
                                        <div class="media">
                                            <img class="d-flex align-self-center img-radius" src="{{ asset('assets/dashboard/assets/images/avatar-3.jpg') }}" alt="Generic placeholder image">
                                            <div class="media-body">
-                                               <h5 class="notification-user">Sara Soudein</h5>
-                                               <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                               <span class="notification-time">30 minutes ago</span>
+                                               <h5 class="notification-user">Malado Diall</h5>
+                                               <p class="notification-msg">Vieenet de retirer sa carte d'identité.</p>
+                                               <span class="notification-time">Il y'a 1h.</span>
                                            </div>
                                        </div>
                                    </li>

@@ -46,11 +46,11 @@
                     @endif
                 
                     <marquee behavior="" direction="">
-                        <h6 class="text-danger">Si vous rejetter la demande veuillez s'il vous changer le status en Rejetter et mentionnez le motif du rejet</h6>
+                        <h6 class="text-danger">Vous etes sur le point de donner le document, rassurer vous que c'est bien la meme personne avant de rendre le document</h6>
                     </marquee>  
                     
 
-                    <form action="" class="px-md-2" method="POST">
+                    <form action="{{ route('retraicartedientite', $prendre->id) }}" class="px-md-2" method="POST">
                         @csrf
                         @method('PATCH')
                             {{-- Try --}} 
@@ -63,6 +63,7 @@
                                   </div>
               
                                 </div>
+                                
                                 <div class="col-md mb-4">
                                   <label for="exampleDatepicker1" class="form-label">Date du Rendez Vous</label>
                                   <input type="text" class="form-control" id="exampleDatepicker1" name="phone" readonly value="{{ $prendre->daterdv }}"/>
@@ -71,10 +72,10 @@
                             
                             <div class="row">
                                 <div class="col mb-4">
-                                  <div class="form-outline datepicker">
-                                    <label for="exampleDatepicker1" class="form-label">Date de Retrait</label>
-                                    <input type="datetime-local" class="form-control" id="exampleDatepicker1" name="date_retrait" />
-                                  </div>
+                                    <div class="form-outline datepicker">
+                                        <label for="exampleDatepicker1" class="form-label">Numero du document</label>
+                                        <input type="text" class="form-control" id="exampleDatepicker1" name="numero_document">
+                                    </div>
               
                                 </div>
                                 <div class="col-md mb-4">
@@ -83,11 +84,11 @@
                                 </div>
                             </div>     
                         
-                        <div class="form-outline mb-4">
+                        {{-- <div class="form-outline mb-4">
                             <label class="form-label fw-bold" for="form3Example1q">Numero du document retiré</label>
                             <input type="text" class="form-control" id="exampleDatepicker1" name="numero_document" />
-                            {{-- <textarea name="motifrejet" class="form-control" id="" cols="30" rows="5"></textarea> --}}
-                        </div>
+                             <textarea name="motifrejet" class="form-control" id="" cols="30" rows="5"></textarea> 
+                        </div> --}}
                           
                         <div class="modal-footer">  
                             <button type="button" class="btn text-white" style="background-color:#B66639" data-bs-dismiss="modal">Annuler</button>

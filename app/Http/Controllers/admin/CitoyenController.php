@@ -10,6 +10,7 @@ use App\Models\admins;
 use App\Models\User;
 
 use App\Models\citoyens;
+use App\Models\demandescer;
 use App\Models\demandesci;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,11 +21,19 @@ class CitoyenController extends Controller
     {
         $user = Auth::user();
         $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
-        return view('citoyen.dashboard', compact('user','ayira'));
+        $nanaye = demandescer::where('id_users',$user->id)->orderBy('id','desc')->get();
+        
+        return view('citoyen.dashboard', compact('user','ayira','nanaye'));
     }
     public function index()
     {
         return view('welcome');
+    }
+
+    public function updateprofile()
+    {
+        $user = User:: all();
+        return view('citoyen.modifierprofil', compact('user'));
     }
 
     public function store(Request $request)
@@ -52,6 +61,7 @@ class CitoyenController extends Controller
                         'nom' => $request['nom'],
                         'prenom' => $request['prenom'],
                         'email' =>$request['email'],
+                        'adresse' =>$request['adresse'],
                         'password' => bcrypt($request['password']),
                         'status' => 'citoyen',
                     ]
@@ -76,7 +86,7 @@ class CitoyenController extends Controller
 
                             ]
                             );                          
-                            return redirect('welcome')->with('success', 'Félicitations très chèr(e) citoyen votre compte a été crée avec success !!');
+                            return redirect('/')->with('success', 'Félicitations très chèr(e) citoyen votre compte a été crée avec success !!');
                             
 
                     }

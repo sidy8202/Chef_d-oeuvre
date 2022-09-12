@@ -8,38 +8,38 @@
         <div class="row">
                                             <!-- order-card start -->
                                             <div class="col-md-6 col-xl-3">
-                                                <div class="card bg-c-blue order-card" onclick="location.href='{{ url('demandecirecp') }}';" style="cursor: pointer">
+                                                <div class="card bg-c-blue order-card" onclick="location.href='{{ route('carteciaffichage') }}';" style="cursor: pointer">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20">Cartes d'identités</h6>
-                                                        <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>50</span></h2>
-                                                        <p class="m-b-0">Cette semaine<span class="f-right">10</span></p>
+                                                        <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>{{$ayira->count()}}</span></h2>
+                                                        <p class="m-b-0">Cette semaine<span class="f-right">!=done</span></p> 
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xl-3">
-                                                <div class="card bg-c-green order-card" onclick="location.href='{{ url('demandecrecp') }}';" style="cursor: pointer">
+                                                <div class="card bg-c-green order-card" onclick="location.href='{{ url('demandecrrecp') }}';" style="cursor: pointer">
                                                     <div class="card-block">
-                                                        <h6 class="m-b-20">Certificats Residences</h6>
-                                                        <h2 class="text-right"><i class="ti-tag f-left"></i><span>25</span></h2>
-                                                        <p class="m-b-0">Cette semaine<span class="f-right">213</span>10</p>
+                                                        <h6 class="m-b-20">Certificats Residences</h6> 
+                                                        <h2 class="text-right"><i class="ti-tag f-left"></i><span>{{  $nanayé->count() }}</span></h2>    
+                                                        <p class="m-b-0">Cette semaine<span class="f-right">!=done</span></p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xl-3">
-                                                <div class="card bg-c-yellow order-card">
+                                                <div class="card bg-c-yellow order-card" onclick="location.href='{{ route('voirlisterdv') }}';" style="cursor: pointer">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20"> Retraits</h6>
-                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>10</span></h2>
-                                                        <p class="m-b-0">Ce mois<span class="f-right">1032</span>5</p>
+                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>{{ $retrait->count() }}</span></h2>
+                                                        <p class="m-b-0">Ce mois<span class="f-right">!=done</span></p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xl-3">
-                                                <div class="card bg-c-pink order-card">
+                                                <div class="card bg-c-pink order-card" onclick="location.href='{{ route('voirtouslescitoyens') }}';" style="cursor: pointer">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20">Utilisateurs</h6>
-                                                        <h2 class="text-right"><i class="ti-wallet f-left"></i><span>1500</span></h2>
-                                                        <p class="m-b-0">Ce mois<span class="f-right">542</span></p>
+                                                        <h2 class="text-right"><i class="ti-wallet f-left"></i><span>{{ $malidew->count() }}</span></h2>
+                                                        <p class="m-b-0">Ce mois<span class="f-right">!=done</span></p>
                                                     </div>
                                                 </div>
                                             </div>

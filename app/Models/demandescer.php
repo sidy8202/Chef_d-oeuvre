@@ -12,6 +12,7 @@ class demandescer extends Model
     protected $fillable =
     [
         'objet',
+        'type',
         'motifrejet',    
         'id_users',
         'document',

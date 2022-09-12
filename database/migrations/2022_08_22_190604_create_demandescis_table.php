@@ -15,9 +15,10 @@ class CreateDemandescisTable extends Migration
     {
         Schema::create('demandescis', function (Blueprint $table) {
             $table->id();
-            $table->string('type'); 
-            $table->string('teint'); 
-            $table->string('taille'); 
+            $table->string('type');  
+            $table->integerIncrements('numero_demande');  
+
+            
             $table->string('objet');
 
             

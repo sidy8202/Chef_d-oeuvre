@@ -23,6 +23,8 @@ class User extends Authenticatable
         'email',
         'status',
         'password',
+        'adresse',
+
     ];
 
     public function receptionnistes()
@@ -39,7 +41,7 @@ class User extends Authenticatable
         return $this->hasMany(admins::class,'user_Id');
     }
 
-    public function demandeci()
+    public function demandesci()
     {
         return $this->hasMany(demandesci::class,'user_Id');
     }
@@ -47,6 +49,21 @@ class User extends Authenticatable
     public function demandescer()
     {
         return $this->hasMany(demandescer::class,'user_Id');
+    }
+
+    public function rendezvous()
+    {
+        return $this->hasMany(rendezvous::class,'user_Id');
+    }
+
+    public function daterdvci()
+    {
+        return $this->hasManyThrough(rendezvous::class, demandesci::class);
+    }
+
+    public function daterdvcr()
+    {
+        return $this->hasManyThrough(rendezvous::class, demandescer::class);
     }
 
     /**

@@ -10,6 +10,7 @@ class receptionnistes extends Model
     use HasFactory;
     protected $fillable=
     [
+        'profile_img',
         'nom',
         'prenom',
         'adresse',

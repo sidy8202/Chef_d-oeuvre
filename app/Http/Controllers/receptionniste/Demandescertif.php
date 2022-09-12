@@ -13,31 +13,36 @@ class Demandescertif extends Controller
     {
         $cert = demandescer:: where('status', '=' , 'En cours')->get();
         $gnouman = demandescer:: where('status', '=' , 'Valider')->get();
-        $rejet = demandescer:: where('status', '=' , 'Rejetter')->get();
+        $rejet = demandescer:: where('status', '=' , 'Rejeter')->get();
 
         return view('receptionniste.listecrdemanderec' ,compact('cert','rejet','gnouman'));
     }
 
+    public function mescertificats()
+    {
+        return view('receptionniste.mescertificats');
+    }
+    
     
     public function edit($id)
     {
-        $abai = demandescer::findOrfail($id);
-        return view('receptionniste.modifcert',compact('abai'));
+        $cool = demandescer::findOrfail($id);
+        return view('receptionniste.modifcert',compact('cool'));
     }
 
     public function update(Request $request,$id)
     {
-        $abai = $request->validate([
+        $cool = $request->validate([
 
  
             'motifrejet'=>'required'
 
         ]);
 
-        if($abai);
+        if($cool);
         {
-            $abai = demandescer::whereId($id)->update([
-            'status'=>'Rejetter',
+            $cool = demandescer::whereId($id)->update([
+            'status'=>'Rejeter',
             'motifrejet'=>$request['motifrejet'],
             ]);
         }
@@ -45,6 +50,36 @@ class Demandescertif extends Controller
         return redirect('demandecrrecp');
 
     }
+
+    // edit pour valider la demande
+
+    public function editvalider($id)
+    {
+        $cool = demandescer::findOrfail($id);
+        return view('receptionniste.validercertificat',compact('cool'));
+    }
+
+    public function updatevalider(Request $request,$id)
+    {
+        $cool = $request->validate([
+
+ 
+            'status'=>'required'
+
+        ]);
+
+        if($cool);
+        {
+            $cool = demandescer::whereId($id)->update([
+            'status'=>'Valider',
+            ]);
+        }
+        
+        return redirect('demandecrrecp');
+
+    }
+
+    // fin edit validation
 
     public function store(Request $request)
     {
@@ -75,6 +110,6 @@ class Demandescertif extends Controller
                 ]
             );
         }
-        return redirect('/demandecrrecp')->with('success', 'Votre demande a eté envoyée avec succèss!!!');
+        return redirect('/demandecrrecp')->with('success', 'Votre demande a eté envoyée avec succèss!');
     }
 }

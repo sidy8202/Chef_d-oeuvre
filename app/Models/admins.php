@@ -10,6 +10,7 @@ class admins extends Model
     use HasFactory;
     protected $fillable=
     [
+        'profile_img',
         'nom',
         'prenom',
         'adresse',

@@ -141,7 +141,7 @@
         </div>
 
         <div class="modal-body">
-            <form action="{{ URL('admin/citoyenadd') }}" class="px-md-2" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('ajoutcitoyensstore') }}" class="px-md-2" enctype="multipart/form-data" method="POST">
               @csrf
                   {{-- Try --}}                      
 
@@ -216,13 +216,13 @@
                     <input type="password" class="form-control" id="exampleDatepicker1" name="password_confirmation" required autocomplete="new-password"/>
                   </div>
                 </div>           
-        </div>
+                </div>
 
                 <div class="modal-footer">  
                   <button type="button" class="btn text-white" style="background-color:#B66639" data-bs-dismiss="modal">Annuler</button>
                   <button type="submit" class="btn text-white" style="background-color:#0972a1">Valider</button>
                 </div>
-              </form >
+            </form >
       </div>
     </div>
   </div>
@@ -388,14 +388,13 @@
               <li>
                 <i class="bx bx-images"></i>
                 <div>
-                  <h5>L'elevation du nombre de carte d'identité par jour</h5>
-                  <p>Plus le traitement est rapide plus il aura des cartes à retirer. </p>
+                  <h5>Bannir la file d'attente devant nos commissariats</h5>
+                  <p>Nous sommes à l'epoque de la veille technolique, la file d'attente doit etre eviter et c'est avec Faso Doc. </p>
                 </div>
               </li>
             </ul>
             <p>
-              L'application est très facile à utiliser, il suffit juste de pointer votre curseur sur le option compte dans le menu, ensuite cliquer sur créer un compte. Maintenant que le compte est crée il ne vous reste que de vous connecter et le tour est joué. Après la connexion vous serez rediriger vers votre tableau de board et vous pourrez ensuite profiter de tous nos service.
-             
+              L'application est très facile à utiliser, il suffit juste de pointer votre curseur sur le option compte dans le menu, ensuite cliquer sur créer un compte. Maintenant que le compte est crée il ne vous reste que de vous connecter et le tour est joué. Après la connexion vous serez rediriger vers votre tableau de board et vous pourrez ensuite profiter de tous nos service.             
             </p>
           </div>
         </div>
@@ -560,7 +559,7 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-6 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
               <h4><a href="">Carte d'identité</a></h4>
@@ -568,7 +567,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4><a href="">Certificat de residence</a></h4>
@@ -576,13 +575,13 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+          {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
               <h4><a href="">Declaration de pertes</a></h4>
               <p>Inscrivez vous et envoyez nous avec preuve à l'appuis ce que vous avez perdu et comment et vous serrez ensuite notifié une fois l'objet trouvé.</p>
             </div>
-          </div>
+          </div> --}}
 
           {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
@@ -912,7 +911,7 @@
 
         <div class="row">
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="box">
               <h3>Carte d'identité</h3>
               <h4><sup>F.cfa</sup>1500<span> </span></h4>
@@ -929,7 +928,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-6 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
             <div class="box featured">
               <h3>Certificat de residence</h3>
               <h4><sup>Fcfa</sup>1700<span> </span></h4>
@@ -946,7 +945,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+          {{-- <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
             <div class="box">
               <h3>Declaration de perte</h3>
               <h4><sup>Fcfa</sup>1250<span> </span></h4>
@@ -954,14 +953,14 @@
                 <li>Photo de l'object</li>
                 <li>Document justifiant votre appartenance</li>
                 <li>Facture d'achat</li>
-                {{-- <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li> --}}
+                <li>Pharetra massa</li>
+                <li>Massa ultricies mi</li>
               </ul>
               <div class="btn-wrap">
                 <a href="#" class="btn-buy" data-bs-toggle="modal" data-bs-target="#infos">Envoyer</a>
               </div>
             </div>
-          </div>
+          </div> --}}
         
 
           {{-- <span class="advanced">Advanced</span> --}}

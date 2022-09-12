@@ -17,7 +17,7 @@ class CreateDemandescersTable extends Migration
             $table->id();
             $table->string('type'); 
             $table->string('objet'); 
-            
+            $table->integerIncrements('numero_demande');  
             $table->string('document')->nullable();
             $table->string('motifrejet')->nullable();
             $table->string('status')->nullable();

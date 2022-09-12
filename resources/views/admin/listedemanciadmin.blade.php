@@ -11,8 +11,8 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Demande Carte d'identité</h5>
+      <div class="modal-header" style="background-color:#73b4ff">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Demande Carte d'identité</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -20,22 +20,9 @@
 
               <form action="" enctype="multipart/form-data" method="POST">
                 @csrf
-
-                {{-- <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example1q">Type de demande</label>
-                  <input type="text" id="form3Example1q" class="form-control" name="type">
-                </div> --}}
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example1q">Objet</label>
-                  <input type="text" id="form3Example1q" class="form-control" name="objet">
-                </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example1q">Taille</label>
-                    <input type="text" id="form3Example1q" class="form-control" name="taille">
-                </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example1q">Teint</label>
-                    <input type="text" id="form3Example1q" class="form-control" name="teint">
+                  <textarea id="form3Example1q" class="form-control" name="objet" cols="30" rows="3"></textarea>
                 </div>
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example1q">Anncienne piece ou extrait</label>
@@ -60,7 +47,7 @@
                 
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn text-white" style="background-color:#B66639"  data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" class="btn btn-primary">Envoyer</button>
                   </div>
 
@@ -97,22 +84,22 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs md-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>Les demandes</a>
+                    <a class="nav-link active" data-toggle="tab" href="#home3" role="tab"><i class="fa fa-home"></i>La liste des demandes en cours</a>
                     <div class="slide"></div>
                 </li>
                 
-                {{-- <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#profile3" role="tab"><i class="fa fa-key"></i>Security</a>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#profile3" role="tab"><i class="fa fa-key"></i>Demandes Validées</a>
                     <div class="slide"></div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#messages3" role="tab"><i class="fa fa-play-circle"></i>Entertainment</a>
+                    <a class="nav-link" data-toggle="tab" href="#messages3" role="tab"><i class="fa fa-play-circle"></i>Demandes rejetées</a>
                     <div class="slide"></div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#settings3" role="tab"><i class="fa fa-database"></i>Big Data</a>
+                <li class="nav-item ">
+                    <a class="nav-link text-white" data-toggle="tab" href="settings3" role="tab" style="background-color:#0972a1" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-database"></i>Nouvelle Demande</a>
                     <div class="slide"></div>
-                </li> --}}
+                </li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content card-block">
@@ -124,95 +111,74 @@
                                 <th>No Demande</th>
                                 <th>Date Demande</th>
                                 <th>Demandeur</th>
+                                <th>Quartier</th>
+                                <th>Status</th>
                                 <th>Document envoyé</th>
-                                <th>Actions</th>
+                                <th>Actions</th>    
                                 
                                 
                             </tr>
-                            
-                                
-                            
                             <tr>
                                 <td></td>
                                 <td></td>
-
-                                <td><a href="" download>Fichier</a></td>
-                                             
-                                <td>
-                                    <a href="" view class="btn btn-sm label btn-primary">Voir</a>
-                                
-                                                               
-                                </td>
-                                
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>                                
                             </tr>
                             
                         </table>
                     </div>
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <button class="btn btn-outline-primary btn-round btn-sm">Plus</button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="tab-pane" id="profile3" role="tabpanel">
 
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th>Image</th>
-                                <th>Product Code</th>
-                                <th>Customer</th>
-                                <th>Purchased On</th>
-                                <th>Status</th>
-                                <th>Transaction ID</th>
+                              <th>No Demande</th>
+                              <th>Date Demande</th>
+                              <th>Demandeur</th>
+                              <th>Status</th>
+                              <th>Document envoyé</th>
+                              <th>Actions</th>
                             </tr>
                             <tr>
-                                <td><img src="assets/images/product/prod3.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002653</td>
-                                <td>Eugine Turner</td>
-                                <td>04-01-2017</td>
-                                <td><span class="label label-success">Delivered</span></td>
-                                <td>#7234417</td>
-                            </tr>
-                            <tr>
-                                <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002156</td>
-                                <td>Jacqueline Howell</td>
-                                <td>03-01-2017</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>#7234454</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="tab-pane" id="messages3" role="tabpanel">
 
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th>Image</th>
-                                <th>Product Code</th>
-                                <th>Customer</th>
-                                <th>Purchased On</th>
+                                <th>No Demande</th>
+                                <th>Date Demande</th>
+                                <th>Demandeur</th>
                                 <th>Status</th>
-                                <th>Transaction ID</th>
+                                <th>Motif rejet</th>
+                                <th>Document envoyé</th>
                             </tr>
                             <tr>
-                                <td><img src="assets/images/product/prod1.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002413</td>
-                                <td>Jane Elliott</td>
-                                <td>06-01-2017</td>
-                                <td><span class="label label-primary">Shipping</span></td>
-                                <td>#7234421</td>
-                            </tr>
-                            <tr>
-                                <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
-                                <td>PNG002156</td>
-                                <td>Jacqueline Howell</td>
-                                <td>03-01-2017</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>#7234454</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </table>
                     </div>
@@ -250,9 +216,9 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

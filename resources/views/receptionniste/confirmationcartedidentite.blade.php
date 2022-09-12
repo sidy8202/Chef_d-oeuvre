@@ -46,7 +46,7 @@
                     @endif
                 
                     <marquee behavior="" direction="">
-                        <h6 class="text-danger">Si vous validé la demande veuillez s'il vous changer le status en Valider et mentionnez le motif du rejet</h6>
+                        <h6 class="text-danger">Si vous validez la demande veuillez s'il vous plait changez le status en Valider </h6>
                     </marquee>  
                     
 
@@ -58,7 +58,7 @@
                                 <div class="col mb-4">
                                   <div class="form-outline datepicker">
                                     <label for="exampleDatepicker1" class="form-label">Numero de la demande</label>
-                                    <input type="text" class="form-control" id="exampleDatepicker1" name="adresse" readonly value="{{ $cissan->id }}"/>
+                                    <input type="text" class="form-control" id="exampleDatepicker1" name="adresse" readonly value="CI0{{ $cissan->id }}"/>
                                   </div>
               
                                 </div>
@@ -66,18 +66,23 @@
                                   <label for="exampleDatepicker1" class="form-label">Date de la demande</label>
                                   <input type="text" class="form-control" id="exampleDatepicker1" name="phone" readonly value="{{ $cissan->created_at }}"/>
                                 </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label fw-bold" for="form3Example1q">Demandeur</label>
+                                <input type="text" class="form-control" id="exampleDatepicker1" name="phone" readonly value="{{ $cissan->user->nom }}  {{ $cissan->user->prenom }}"/>
+                                
                             </div>  
                             <div class="form-outline mb-4">
-                            <label class="form-label fw-bold" for="form3Example1q">Status</label>
-                            <select name="status" id="" class="form-control" id="exampleDatepicker1">
-                                <option value="">Changer en Valider</option>
-                                <option value="Valider">Valider</option>
+                                <label class="form-label fw-bold" for="form3Example1q">Status</label>
+                                <select name="status" id="" class="form-control" id="exampleDatepicker1">
+                                    <option value="">Changer en Valider</option>
+                                    <option value="Valider">Valider</option>
 
-                            </select>
-                          </div>
+                                </select>
+                            </div>
                           
                           <div class="modal-footer">  
-                            <button type="button" class="btn text-white" style="background-color:#B66639" data-bs-dismiss="modal">Annuler</button>
+                            <a href="{{ url('demandeciview')}}" type="button" class="btn text-white" style="background-color:#B66639" >Annuler</a>
                             <button type="submit" class="btn text-white" style="background-color:#0972a1">Valider</button>
                           </div>                     
                       </form>

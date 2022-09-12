@@ -96,7 +96,7 @@
                                </a>
                            </li>
                        </ul>
-                       <ul class="nav-right">
+                       {{-- <ul class="nav-right">
                            <li class="header-notification">
                                <a href="#!">
                                    <i class="ti-bell"></i>
@@ -175,7 +175,87 @@
                                    </li>
                                </ul>
                            </li>
-                       </ul>
+                       </ul> --}}
+                       <ul class="nav-right">
+                        <li class="header-notification">
+                            <a href="#!">
+                                <i class="ti-bell"></i>
+                                <span class="badge bg-c-pink"></span>
+                            </a>
+                            <ul class="show-notification">
+                                <li>
+                                    <h6>Notifications</h6>
+                                    <label class="label label-danger">Recentes</label>
+                                </li>
+                                <li>
+                                    <div class="media">
+                                        <img class="d-flex align-self-center img-radius" src="{{ asset('assets/dashboard/assets/images/avatar-2.jpg') }}" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="notification-user">Diagui Tounkara</h5>
+                                            <p class="notification-msg">Nouvelle demande de carte di'identité.</p>
+                                            <span class="notification-time">Il y'a 30 minutes </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="media">                              
+                                        <img class="d-flex align-self-center img-radius" src="{{ asset('assets/dashboard/assets/images/avatar-4.jpg') }}" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="notification-user">Fatoumata Konta</h5>
+                                            <p class="notification-msg">Nouvelle demande de certificat de residence.</p>
+                                            <span class="notification-time">Il y'a 30 minutes ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="media">
+                                        <img class="d-flex align-self-center img-radius" src="{{ asset('assets/dashboard/assets/images/avatar-3.jpg') }}" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="notification-user">Malado Diall</h5>
+                                            <p class="notification-msg">Vient de retirer sa carte d'identité.</p>
+                                            <span class="notification-time">Il y'a 1h.</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="user-profile header-notification">
+                            <a href="#!">
+                                <img src="{{ asset('assets/dashboard/assets/images/avatar-4.jpg') }}" class="img-radius" alt="User-Profile-Image">
+                                <span>{{ Auth::user()->prenom }}  {{ Auth::user()->nom }}</span>
+                                <i class="ti-angle-down"></i>
+                            </a>
+                            <ul class="show-notification profile-notification">
+                                <li>
+                                    <a href="#">
+                                        <i class="ti-settings"></i> Parametres
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="ti-user"></i> Profil
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="auth-lock-screen.html">
+                                        <i class="ti-lock"></i> Verrouiller Ecran
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="ti-layout-sidebar-left"></i> Deconnexion
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
                    </div>
                </div>
            </nav>
@@ -187,10 +267,10 @@
                         <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                         <div class="pcoded-inner-navbar main-menu">
                             
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Deconnexion</div>
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Un Mali Innovant</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active">
-                                    <a href="index.html">
+                                    <a href="">
                                         <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                         <span class="pcoded-mcaret"></span>
@@ -221,13 +301,13 @@
                                     </ul>
                                 </li>
 
-                                <li>
+                                {{-- <li>
                                     <a href="{{ url('declarationperte') }}">
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.form-components.main">Declaration de perte</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
@@ -243,13 +323,13 @@
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
-                                        <li class=" ">
+                                        {{-- <li class=" ">
                                             <a href="{{ url('listecrdemandes') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Retraits</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
                                 </li>
@@ -272,16 +352,16 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="accordion.html">
+                                            <a href="">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Toutes les demandes</span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Carte d'identité</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="breadcrumb.html">
+                                            <a href="">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Toutes les declarations</span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Certificats de residence</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
@@ -296,7 +376,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="{{ url('creadmin') }}">
+                                            <a href="{{ route('adminadd') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Admins</span>
                                                 <span class="pcoded-mcaret"></span>
@@ -310,7 +390,7 @@
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="breadcrumb.html">
+                                            <a href="{{ route('ajouterreceptionniste') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Receptionnistes</span>
                                                 <span class="pcoded-mcaret"></span>
@@ -322,15 +402,15 @@
 
                             </ul>
 
-                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Les  Paiements</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li>
+                             {{-- <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Les  Paiements</div> --}}
+                            {{-- <ul class="pcoded-item pcoded-left-item"> --}}
+                                {{-- <li>
                                     <a href="chart.html">
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.form-components.main">Paiements</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 {{-- <li>
                                     <a href="map-google.html">
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
@@ -369,7 +449,7 @@
                                     </ul>
                                 </li> --}}
 
-                            </ul> 
+                            {{-- </ul>  --}}
 
                             {{-- <div class="pcoded-navigatio-lavel" data-i18n="nav.category.other">Other</div>
                             <ul class="pcoded-item pcoded-left-item">

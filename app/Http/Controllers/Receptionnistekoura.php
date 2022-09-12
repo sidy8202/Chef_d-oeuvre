@@ -11,13 +11,15 @@ class Receptionnistekoura extends Controller
 
     public function index ()
     {
-        return view('receptionniste.crerecp');
+        $receptionniste= receptionnistes::all();
+        return view('receptionniste.crerecp', compact('receptionniste'));
     }
     public function store(Request $request)
     {
         $nagnana = $request->validate(
             [
-
+        
+                'profile_img' => 'required|mimes:png,jpg,jpeg|max:1000',
                 'nom'=>['required','string','max:225'],
                 'prenom'=>['required','string','max:225'],                
                 'adresse'=>['required','string','max:225'],
@@ -31,6 +33,7 @@ class Receptionnistekoura extends Controller
 
             if($nagnana)
             {
+                
                 $user =  User::create(
                     [
                         'nom' => $request['nom'],
@@ -44,8 +47,11 @@ class Receptionnistekoura extends Controller
 
                     if($user)
                     {
+                        $fileName = time().'.'.$request->profile_img->extension();  
+                        $request->profile_img->move(public_path('profile/receptionnistes'), $fileName);
                         $receptionniste = receptionnistes::create(
                             [
+                                'profile_img'=>$fileName,
                                 'id_users' => $user->id,
                                 'nom'=>$request['nom'],
                                 'prenom'=>$request['prenom'],

@@ -14,17 +14,25 @@ class rendezvous extends Model
         'daterdv',
         'id_demandesci',
         'id_demandescer',
+        'id_users',
+        'etat',
+        'typedocument',
     ];
 
     public function demandesci()
     {
-        return $this->hasMany(demandesci::class,'id_demandesci');
+        // return $this->hasMany(demandesci::class,'id_demandesci');
+        return $this->hasOne(demandesci::class, 'idrdv');
 
     }
 
     public function demandescer()
     {
-        return $this->hasMany(demandescer::class,'id_demandescer');
+        return $this->hasOne(demandescer::class,'idrdv');
+    }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_users');
     }
 }

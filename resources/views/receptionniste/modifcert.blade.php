@@ -50,7 +50,7 @@
                     </marquee>  
                     
 
-                    <form action=" {{ route('certerejetupd', $abai->id) }}" class="px-md-2" method="POST">
+                    <form action=" {{ route('certerejetupd', $cool->id) }}" class="px-md-2" method="POST">
                         @csrf
                         @method('PATCH')
                             {{-- Try --}}                      

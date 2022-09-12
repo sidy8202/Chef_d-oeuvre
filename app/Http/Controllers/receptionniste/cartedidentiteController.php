@@ -18,7 +18,14 @@ class cartedidentiteController extends Controller
         return view('receptionniste.listecidemanderec',compact('niyira','gnouman','kolon'));
     }
 
-        // COnfirmer
+    public function mescartesdidentites()
+    {
+        $user = Auth::user();
+        $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
+        return view('receptionniste.mescartedidentite', compact('ayira'));
+    }
+ 
+        // Valider
 
     public function modif($id)
     {
@@ -42,7 +49,7 @@ class cartedidentiteController extends Controller
             ]);
         }
         
-        return redirect('demandeciview')->with('success', 'Demande rejetée avec succèss!!!');
+        return redirect('demandeciview')->with('success', 'Demande rejetée avec succèss!');
     }
 
     public function edit($id)
@@ -67,7 +74,7 @@ class cartedidentiteController extends Controller
             ]);
         }
         
-        return redirect('demandeciview')->with('success', 'Demande rejetée avec succèss!!!');
+        return redirect('demandeciview')->with('success', 'Demande rejetée avec succèss!');
 
     }
 
@@ -102,6 +109,37 @@ class cartedidentiteController extends Controller
             );
         }
    
-        return redirect('/demandeciview')->with('success', 'Votre demande a eté envoyée avec succèss!!!');
+        return redirect('/demandeciview')->with('success', 'Votre demande a eté envoyée avec succèss!');
+    }
+
+    public function mescartesonly(Request $request){
+        $user = Auth::User();
+        $ikason = $request->validate([
+            
+           
+            'objet'=>'required',
+            'document' => 'required|mimes:pdf|max:1000',
+                                    
+        ]);
+
+        if($ikason)
+        {
+            $fileName = time().'.'.$request->document->extension();  
+            $request->document->move(public_path('carte/d_identite'), $fileName);
+
+            $user = Auth::User();
+            
+            $cissan = demandesci::create(
+                [
+                    'document'=>$fileName,
+                    'type' => 'carte d_identite',
+                    'status' => 'En cours',
+                    'objet'=>$request['objet'],
+                    'id_users'=>$user->id,                   
+                ]
+            );
+        }
+   
+        return redirect('/voirmesdemandesdeci')->with('success', 'Votre demande a eté envoyée avec succèss!');
     }
 }

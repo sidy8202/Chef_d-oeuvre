@@ -19,10 +19,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xl-4">
-                                                <div class="card bg-c-green order-card" onclick="location.href='';" style="cursor: pointer">
+                                                <div class="card bg-c-green order-card" onclick="location.href='{{ route('demandecrcitoyen') }}';" style="cursor: pointer">
                                                     <div class="card-block">
-                                                        <h6 class="m-b-20">Rendez Vous</h6>
-                                                        <h2 class="text-right"><i class="ti-tag f-left"></i><span>10</span></h2>
+                                                        <h6 class="m-b-20">Certificat de residence</h6>  
+                                                        <h2 class="text-right"><i class="ti-tag f-left"></i><span>{{ $nanaye->count() }}</span></h2>
                                                         <p class="m-b-0">Cette semaine<span class="f-right">1</span></p>
                                                     </div>
                                                 </div>
@@ -32,8 +32,8 @@
                                                 <div class="card bg-c-yellow order-card" onclick="location.href='';" style="cursor: pointer">
                                                     <div class="card-block">
                                                         <h6 class="m-b-20"> Retraits</h6>
-                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>10</span></h2>
-                                                        <p class="m-b-0">This Month<span class="f-right">1</span></p>
+                                                        <h2 class="text-right"><i class="ti-reload f-left"></i><span>0</span></h2>
+                                                        <p class="m-b-0">This Month<span class="f-right">0</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -133,16 +133,16 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td></td>
-                                                                            <td><span class="label label-danger">Faild</span></td>
+                                                                            <td></td>
                                                                             
                                                                         </tr>
                                                                         
                                                                        
                                                                     </table>
                                                                 </div>
-                                                                <div class="text-center">
+                                                                {{-- <div class="text-center">
                                                                     <button class="btn btn-outline-primary btn-round btn-sm">Plus</button>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
                                                             <div class="tab-pane" id="profile3" role="tabpanel">
 

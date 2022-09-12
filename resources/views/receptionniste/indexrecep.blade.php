@@ -148,6 +148,7 @@
                            <li class="user-profile header-notification">
                                <a href="#!">
                                    <img src="{{ asset('assets/dashboard/assets/images/avatar-4.jpg') }}" class="img-radius" alt="User-Profile-Image">
+                                   {{-- userinformations --}}
                                    <span>{{ Auth::user()->prenom }}  {{ Auth::user()->nom }}</span>
                                    <i class="ti-angle-down"></i>
                                </a>
@@ -192,7 +193,7 @@
                         <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                         <div class="pcoded-inner-navbar main-menu">
                             
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Deconnexion</div>
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation"><span class="">Bienvenue sur Faso Doc</span></div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active">
                                     <a href="{{ route('recepdash')}}">
@@ -272,24 +273,31 @@
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Historique</span>
+                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Mes operations</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="accordion.html">
+                                            <a href="{{ route('myowndemandesci') }}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Toutes les demandes</span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Carte d'identité</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
-                                        {{-- <li class=" ">
-                                            <a href="breadcrumb.html">
+                                        <li class=" ">
+                                            <a href="">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Toutes les declarations</span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Certificat de residence</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
-                                        </li> --}}
+                                        </li>
+                                        <li class=" ">
+                                            <a href="">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Rendez vous</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 

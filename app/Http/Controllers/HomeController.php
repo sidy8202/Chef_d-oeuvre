@@ -6,7 +6,9 @@ use App\Models\receptionnistes;
 use App\Models\admins;
 use App\Models\User;
 use App\Models\citoyens;
+use App\Models\demandescer;
 use App\Models\demandesci;
+use App\Models\rendezvous;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -42,15 +44,22 @@ class HomeController extends Controller
             {
 
                 $niyira = demandesci:: where('status', '=' , 'En cours')->get();
+                
+                $ayira = demandesci::all();
+                $nanayé = demandescer::all();
+                $malidew = User::all();
+                $retrait = rendezvous:: where('etat', '=' , 'Retiré')->get();
+
                 $receptionniste = receptionnistes::where ('id_users', $user->id)->first();
-                return view ('receptionniste.dashboard',compact('receptionniste','niyira'));
+                return view ('receptionniste.dashboard',compact('receptionniste','niyira','ayira','nanayé','malidew','retrait'));
             }
 
             elseif($user->status == 'citoyen')
             {
-                $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
                 $citoyen = citoyens::where ('id_users', $user->id)->first();
-                return view ('citoyen.dashboard',compact('citoyen','ayira'));
+                $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
+                $nanaye = demandescer::where('id_users',$user->id)->orderBy('id','desc')->get();
+                return view ('citoyen.dashboard',compact('citoyen','ayira','nanaye'));
             }
             
             else

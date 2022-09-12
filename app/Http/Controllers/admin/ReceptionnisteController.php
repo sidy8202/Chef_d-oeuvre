@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\citoyens;
 use App\Models\demandesci;
 use App\Models\demandescer;
+use App\Models\rendezvous;
 
 class ReceptionnisteController extends Controller
 {
@@ -18,7 +19,10 @@ class ReceptionnisteController extends Controller
     {
         $ayira = demandesci::all();
         $nanayé = demandescer::all();
-        return view('receptionniste.dashboard', compact('ayira','nanayé'));
+        $malidew = User::all();
+
+        $retrait = rendezvous:: where('etat', '=' , 'Retiré')->get();
+        return view('receptionniste.dashboard', compact('ayira','nanayé','retrait','malidew'));
     }
 
     public function listecitoyens()

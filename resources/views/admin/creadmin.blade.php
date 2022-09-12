@@ -18,8 +18,13 @@
 @extends('admin.indexadmin')
 
 @section( 'contenues') 
-<form action="{{ URL('/admiadd') }}" method="POST">
+<form action="{{ URL('/admiadd') }}" enctype="multipart/form-data" method="POST">
     @csrf
+      <div class="md-form mb-5">
+        <i class="fas fa-envelope prefix grey-text"></i>
+        <label data-error="wrong" data-succes="right" for="">Nom</label>
+        <input type="file" name="profile_img" class="form-control validate">
+      </div>
 
       <div class="md-form mb-5">
         <i class="fas fa-envelope prefix grey-text"></i>

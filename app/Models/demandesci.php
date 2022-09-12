@@ -27,6 +27,7 @@ class demandesci extends Model
 
     public function rendezvous()
     {
+        // return $this->belongsTo(rendezvous::class,'id_demandesci');
         return $this->belongsTo(rendezvous::class,'id_demandesci');
 
     }

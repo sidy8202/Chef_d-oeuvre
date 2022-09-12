@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\demandescarte as ModelsDemandescarte;
 use App\Models\demandesci;
+use App\Models\rendezvous;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,10 @@ class Demandescarte extends Controller
     {   
         $user = Auth::user();
         $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
-        
-        return view('citoyen.listecidemande',compact('user','ayira'));
+        $demandeval= demandesci::where('status', '=', 'Valider')->get();
+        $demanderej= demandesci::where('status', '=', 'Rejeter')->get();
+    
+        return view('citoyen.listecidemande',compact('user','ayira','demandeval','demanderej'));
     }
 
     // public function viewcr()
@@ -55,7 +58,7 @@ class Demandescarte extends Controller
             );
         }
    
-        return redirect('listecidemande')->with('success', 'Votre demande a eté envoyée avec succèss!!!');
+        return redirect('listecidemande')->with('success', 'Votre demande a eté envoyée avec succèss!');
     }
    
 }

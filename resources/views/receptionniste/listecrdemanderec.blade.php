@@ -8,7 +8,7 @@
 <div class="modal fade" id="confModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style="background-color:#73b4ff">
           <h5 class="modal-title" id="exampleModalLabel">Fixer un Rendez vous avec le citoyen</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -69,13 +69,13 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Demande Certificat de residence</h5>
+        <div class="modal-header" style="background-color:#73b4ff">
+          <h5 class="modal-title text-white text-bold" id="exampleModalLabel" >Demande Certificat de residence</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
                   <h6>Veuillez fournir la pièce de votre logeur</h6>
-                <form action="{{ route('listecerdemandes') }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('demandecerrecpstore') }}" enctype="multipart/form-data" method="POST">
                       @csrf
   
                   <div class="form-outline mb-4">
@@ -122,7 +122,7 @@
   
   {{-- Debut rejet --}}
 
-       <div class="modal fade" id="rejetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="rejetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -215,7 +215,7 @@
                       <div class="slide"></div>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#message3" role="tab"><i class="fa fa-play-circle"></i>Les demandes rejetées</a>
+                      <a class="nav-link" data-toggle="tab" href="#messages3" role="tab"><i class="fa fa-play-circle"></i>Les demandes rejetées</a>
                       <div class="slide"></div>
                   </li>
                   <li class="nav-item">
@@ -242,18 +242,19 @@
                              
                               <tr>
                                   {{-- <td><img src="assets/images/product/prod2.jpg" alt="prod img" class="img-fluid"></td> --}}
-                                  <td>{{ $cool->id }}</td>
+                                  <td>CR0{{ $cool->id }}</td>
                                   <td>{{ $cool->created_at }}</td>
                                   <td>{{ $cool->user->nom }}  {{ $cool->user->prenom }}</td>
 
                                   <td>{{ $cool->status }}</td>
                                   <td><a href="{{ url('certi/residencee'.$cool->document) }}" download>Fichier</a></td>
                                   <td>
-                                    <a href="{{ url('certi/residencee'.$cool->document) }}"  class="label btn-primary btn-sm" view >Voir</a>
+                                    <a href="{{ url('certi/residencee/'.$cool->document) }}"  view target="_blank" title="Afficher" data-toggle="tooltip"><i class="ti-eye"></i></a>&nbsp;&nbsp;&nbsp;
+                                    
                                     {{-- <a href="#" class="label label-success btn-sm" data-id="{{ $cool->id }}" id="conf">Valider</a> --}}
-                                    <a href="{{ route('certerevalider', $cool->id) }}" class="label label-danger rejet btn-sm ">rejetter</a>
-                                    <a href="{{ route('certerejet', $cool->id) }}" id="rejet" class="label label-danger rejet btn-sm ">rejetter</a>
-                                </td>                                  
+                                    <a href="{{ route('editerforvalider', $cool->id) }}" class="" title="Valider" data-toggle="tooltip"><i class="ti-check"></i></a>&nbsp;&nbsp;&nbsp;
+                                    <a href="{{ route('certerejet', $cool->id) }}" id="rejet" class="" title="Rejeter" data-toggle="tooltip"><i class="ti-trash"></i></a>
+                                </td>                                        
                               </tr>
                               @endforeach
                           </table>
@@ -276,28 +277,26 @@
                               </tr>
                               @foreach($gnouman as $propre)
                               <tr>
-                                  <td>{{ $propre->id }}</td>
+                                  <td>CR0{{ $propre->id }}</td>
                                   <td>{{ $propre->created_at }}</td>
                                   <td>{{ $propre->user->nom }}  {{ $propre->user->prenom }}</td>
                                   <td>{{ $propre->status }}</td>
                                   <td><a href="{{ url('certi/residencee'.$propre->document) }}" download>Fichier</a></td>
                                   <td>
-                                    <a href="#" class="label label-success btn-sm" data-id="{{ $propre->id }}" id="conf">Valider</a>
+                                    <a href="{{ url('certi/residencee/'.$propre->document) }}" view target="_blank" title="Afficher" data-toggle="tooltip" class=""><i class="ti-eye"></i></a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="" data-id="{{ $propre->id }}" id="conf" view title="RDV" data-toggle="tooltip"><i class="ti-check"></i></a>
+                                    {{-- <a href="#" class="" data-id="{{ $propre->id }}" id="confir"><i class="ti-check"></i></button> --}}
+                                    {{-- <a href="{{ route('confirmerdossier', $cissan->id) }}" class="none" id="confirm"><i class="ti-check"></i></button>                                          
+                                    <a href="{{ route('carterejeter', $cissan->id) }}" class="none" id="rej"><i class="ti-trash"></i></button>  --}}
                                   </td>
                               </tr>
-                              <tr>
-                                  <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
-                                  <td>PNG002156</td>
-                                  <td>Jacqueline Howell</td>
-                                  <td>03-01-2017</td>
-                                  <td><span class="label label-warning">Pending</span></td>
-                                  <td>#7234454</td>
-                              </tr>
+                              @endforeach
+                              
                           </table>
                       </div>
-                      <div class="text-center">
+                      {{-- <div class="text-center">
                           <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
-                      </div>
+                      </div> --}}
                   </div>
                   <div class="tab-pane" id="messages3" role="tabpanel">
   
@@ -309,21 +308,28 @@
                                 <th>Demandeur</th>
                                 <th>Status</th>
                                 <th>FIchier Envoyé</th>
+                                <th>Actions</th>
                               </tr>
+                             @foreach($rejet as $kolon)
                               <tr>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
+                                  <td>CR0{{ $kolon->id }}</td>
+                                  <td>{{ $kolon->created_at }}</td>
+                                  <td>{{ $kolon->user->nom }}  {{ $kolon->user->prenom }}</td>
+                                  <td>{{ $kolon->status }}</td>
+                                  <td><a href="{{ url('certi/residencee'.$kolon->document) }}" download>Fichier</a></td>
+                                  <td>
+                                    <a href="{{ url('certi/residencee/'.$kolon->document) }}" view target="_blank" class="" title="Afficher" data-toggle="tooltip"><i class="ti-eye"></i></a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" data-id="{{ $kolon->id }}" title="Supprimer" data-toggle="tooltip"><i class="ti-trash"></i></a>
+                                  </td>
                               </tr>
+                              @endforeach
                           </table>
                       </div>
-                      <div class="text-center">
+                      {{-- <div class="text-center">
                           <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
-                      </div>
+                      </div> --}}
                   </div>
-                  <div class="tab-pane" id="settings3" role="tabpanel">
+                  {{-- <div class="tab-pane" id="settings3" role="tabpanel">
   
                       <div class="table-responsive">
                           <table class="table">
@@ -356,11 +362,11 @@
                       <div class="text-center">
                           <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
                       </div>
-                  </div>
+                  </div> --}}
               </div>
           </div>
       </div>
-  </div>
+    </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
